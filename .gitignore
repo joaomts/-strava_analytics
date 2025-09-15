@@ -231,6 +231,7 @@ $RECYCLE.BIN/
 *.fls
 *.fdb_latexmk
 *.pdf
+*.nlo
 
 # Arquivos do VSCode
 .vscode/
