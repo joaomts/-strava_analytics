@@ -6,7 +6,7 @@ authors = [
     {name = "joaomm",email = "joaomarcos1296@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     "pandas (>=2.3.2,<3.0.0)",
     "matplotlib (>=3.10.5,<4.0.0)",
@@ -16,6 +16,7 @@ dependencies = [
     "scikit-posthocs (>=0.11.4,<0.12.0)",
     "pingouin (>=0.5.5,<0.6.0)",
     "statsmodels (>=0.14.5,<0.15.0)",
+    "nbconvert (>=7.16.6,<8.0.0)",
 ]
 
 

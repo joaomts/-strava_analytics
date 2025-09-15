@@ -11,7 +11,104 @@
  Para finalizar, serão aplicadas técnicas de avaliação de modelos de regressão linear por meio da análises de resíduos e testes de significância dos coeficientes estimados buscando, assim, entender a relação entre as variáveis independentes e o desempenho dos corredores.
 
 
- 
+ % --- INÍCIO DO CAPÍTULO DE METODOLOGIA ---
+
+\chapter{Metodologia}
+\label{chap:metodologia}
+
+Neste capítulo, são detalhados todos os procedimentos metodológicos empregados para atingir os objetivos propostos por este trabalho. A estrutura abrange o delineamento da pesquisa, a caracterização da população e amostra, os métodos de coleta e tratamento dos dados, a engenharia de variáveis, as técnicas de análise estatística e os softwares utilizados.
+
+\section{Delineamento da Pesquisa}
+
+O presente trabalho configura-se como um estudo quantitativo, de caráter descritivo e explicativo. Descritivo por meio da Análise Exploratória de Dados (AED), que visa caracterizar o perfil dos atletas da amostra. Explicativo ao utilizar técnicas de estatística inferencial, como a regressão linear múltipla, para modelar e explicar a relação entre um conjunto de variáveis e o desempenho final dos corredores.
+
+\section{População e Amostra}
+
+A população do estudo foi composta pelos participantes das edições de 2022 e 2023 da prova de \emph{trekking} de montanha \textit{La Misión Brasil}. O foco da análise recaiu sobre a modalidade de 35 quilômetros, realizada na cidade de Passa Quatro-MG, na região da Serra Fina. O percurso, caracterizado por alta tecnicidade, incluiu trechos de via ferrata e ``escalaminhada'', acumulando aproximadamente 2.791 metros de ganho de elevação positivo.
+
+A amostra foi não-probabilística, por conveniência, composta por atletas cujas atividades relativas à prova estavam publicamente disponíveis na plataforma de rastreamento de exercícios Strava. Após o processo completo de coleta e tratamento dos dados, a amostra final consistiu em \textbf{109 atletas únicos}, sendo 78 do sexo masculino e 31 do sexo feminino.
+
+\section{Coleta e Pré-processamento dos Dados}
+
+A obtenção dos dados foi uma etapa fundamental do estudo, dividida em quatro fases principais: padronização das informações do percurso, extração automatizada de dados da web, limpeza e estruturação final do conjunto de dados.
+
+\subsection{Padronização dos Dados do Percurso via GPX}
+\label{subsec:gpx}
+
+A fim de garantir a consistência e a padronização das variáveis geográficas do percurso para todos os atletas, evitando discrepâncias inerentes a diferentes dispositivos de GPS, o ponto de partida foi a análise de um arquivo GPX (GPS Exchange Format) oficial da prova. Este arquivo foi processado para extrair informações de elevação a cada quilômetro, criando um gabarito do percurso com 36 segmentos. Essa abordagem permitiu que variáveis como ganho de elevação positivo e negativo de um determinado quilômetro fossem padronizadas e atribuídas de forma idêntica a todos os corredores da amostra.
+
+\subsection{Extração de Dados via \textit{Web Scraping}}
+\label{subsec:scraping}
+
+Para a extração dos dados de desempenho e demográficos dos atletas, foi desenvolvida uma solução de \emph{web scraping} utilizando a linguagem de programação Python e a biblioteca \texttt{Selenium}, que permite a automação de navegadores web. O processo exigiu a autenticação em uma conta de usuário com assinatura paga na plataforma Strava para acessar os dados detalhados.
+
+O fluxo de extração foi estruturado da seguinte forma:
+\begin{enumerate}
+    \item \textbf{Coleta de Links:} O ponto de partida foram as páginas de resultados (tabelas de classificação) das edições de 2022 e 2023 da prova. O script navegou por estas páginas e coletou as URLs individuais de cada atividade de atleta registrada.
+    
+    \item \textbf{Extração de Dados de Performance:} Em um processo iterativo, o script acessava a URL de cada atleta. A prioridade era extrair a tabela de ``Voltas'' (\texttt{laps}), identificada pelo seletor CSS \texttt{'li[data-tracking-element="laps"] a'}, que continha os dados detalhados de tempo a cada quilômetro. Caso esta tabela não estivesse disponível, o script adotava uma abordagem de \emph{fallback}, extraindo os dados da tabela de segmentos principal.
+    
+    \item \textbf{Extração de Dados Demográficos:} Para obter as variáveis de sexo, faixa etária e faixa de peso, foi empregada uma técnica de filtragem na página principal de resultados. O script aplicava sequencialmente cada filtro (ex: sexo masculino), extraía a lista de nomes dos atletas correspondentes e armazenava essa informação. Posteriormente, esses dados foram unificados com os dados de performance através do nome dos atletas.
+    
+    \item \textbf{Gestão de Desafios Técnicos:} Durante a execução, foi observado que a plataforma poderia apresentar lentidão no carregamento de elementos. Para contornar essa questão, pausas estratégicas de 5 segundos (\texttt{time.sleep(5)}) foram inseridas no código para garantir que as páginas estivessem completamente carregadas antes da extração, aumentando a robustez do processo.
+\end{enumerate}
+A coleta foi restrita a dados de perfis e atividades publicamente compartilhados pelos usuários.
+
+\subsection{Limpeza e Estruturação dos Dados}
+\label{subsec:limpeza}
+
+Após a extração, foi realizado um rigoroso processo de limpeza e estruturação:
+\begin{enumerate}
+    \item \textbf{Unificação e Junção:} Os dados de performance dos atletas foram unidos (\emph{join}) aos dados padronizados do percurso (obtidos via GPX) pela coluna indicativa do quilômetro.
+    
+    \item \textbf{Tratamento de Duplicatas:} Identificou-se que 7 atletas participaram das duas edições da prova. Para garantir a independência das observações, foi mantida apenas a primeira participação de cada um, resultando em 166 atletas únicos nesta fase.
+    
+    \item \textbf{Padronização de Variáveis:} As colunas de `Tempo` e `Ritmo`, que se apresentavam em formatos distintos, foram unificadas e convertidas para uma unidade padrão de segundos.
+    
+    \item \textbf{Tratamento de Valores Ausentes:} A estratégia de tratamento de dados faltantes foi definida conforme a variável:
+    \begin{itemize}
+        \item \textbf{Frequência Cardíaca:} A coluna foi removida do conjunto de dados devido ao alto percentual de valores ausentes.
+        \item \textbf{Faixa de Peso:} Com aproximadamente 12,44\% de dados faltantes, optou-se por imputar os valores nulos com a categoria ``Não Informado'', por se tratar de uma variável relevante para a análise.
+        \item \textbf{Sexo e Faixa Etária:} Devido ao baixo percentual de ausência (inferior a 10\%), os atletas (linhas) sem essas informações foram removidos do estudo (exclusão \emph{listwise}).
+    \end{itemize}
+\end{enumerate}
+Ao final deste processo, consolidou-se um conjunto de dados final, limpo e estruturado no formato \emph{long}, contendo 109 atletas e 36 observações (quilômetros) para cada um.
+
+\section{Engenharia de Variáveis}
+
+Para aprofundar a análise, variáveis originais foram transformadas e novas variáveis foram criadas. As principais foram:
+\begin{itemize}
+    \item \textbf{Variabilidade do Ritmo:} Calculada como o desvio padrão do \emph{pace} (em segundos por quilômetro) para cada atleta, servindo como uma medida da consistência do ritmo ao longo da prova.
+    
+    \item \textbf{Faixas Etárias e de Peso:} Foram utilizadas as variáveis categóricas ordinais extraídas do Strava. A definição das faixas seguiu a própria categorização utilizada pela plataforma.
+\end{itemize}
+
+
+
+
+\section{Análise Estatística}
+% O texto desta seção foi mantido da nossa discussão anterior.
+% Sinta-se à vontade para alterá-lo se achar necessário.
+\subsection{Análise Exploratória de Dados (AED)}
+Inicialmente, foi realizada uma AED para resumir e visualizar as principais características dos dados. Foram calculadas medidas de tendência central (média, mediana) e de dispersão (desvio padrão, amplitude interquartil) para as variáveis quantitativas, e distribuições de frequência para as variáveis categóricas. Gráficos como histogramas, boxplots e diagramas de dispersão foram utilizados para a compreensão visual dos dados.
+
+\subsection{Testes de Hipóteses}
+Para comparar o desempenho entre diferentes grupos de corredores, foram aplicados testes de hipóteses não-paramétricos, devido à natureza da distribuição de algumas variáveis. O teste de Mann-Whitney foi utilizado para comparar o tempo final entre os sexos, enquanto o teste de Kruskal-Wallis foi empregado para comparar o desempenho entre as diferentes faixas etárias e de peso.
+
+\subsection{Análise de Correlação}
+Para investigar a associação entre a performance e a consistência do ritmo, foi utilizada a Correlação de Spearman ($\rho$), um teste não-paramétrico que avalia a força e a direção da relação monotônica entre o tempo final e a variabilidade do ritmo.
+
+\subsection{Análise de Agrupamento (\textit{Cluster})}
+Com o objetivo de identificar perfis distintos de corredores com base em suas características de prova, foi aplicada a técnica de clusterização não-supervisionada K-Means. A seleção do número ótimo de \emph{clusters} (k) foi realizada por meio do método do cotovelo (\textit{Elbow Method}).
+
+\subsection{Modelo de Regressão Linear Múltipla}
+Para atingir o objetivo principal do trabalho, foi ajustado um modelo de regressão linear múltipla para prever o tempo final dos atletas (variável dependente) a partir de um conjunto de variáveis preditoras (independentes). Partindo de um modelo inicial completo, foi aplicado um procedimento de seleção de variáveis para obter um modelo final parcimonioso e de boa interpretação. A significância estatística dos coeficientes, a análise do coeficiente de determinação ajustado ($R^2$ ajustado) e a análise gráfica dos resíduos foram utilizadas para avaliar a qualidade e a adequação do modelo final.
+
+\section{Softwares Utilizados}
+
+Todas as etapas de coleta, tratamento e análise estatística dos dados foram conduzidas na linguagem de programação Python (versão 3.x), com o auxílio de bibliotecas consagradas para manipulação e análise de dados, como Pandas, NumPy, Matplotlib, Seaborn, e para modelagem estatística, como Scikit-learn e Statsmodels.
+
+% --- FIM DO CAPÍTULO DE METODOLOGIA ---
 
 
  
