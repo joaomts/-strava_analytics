@@ -1,4 +1,3 @@
-
 %====================================================================
 % Universidade Federal de Uberlândia
 % Faculdade de Matemática
@@ -6,195 +5,65 @@
 % do Bacharelado em Estatística
 % Autor: Prof. Dr. Alessandro Alves Santana
 %====================================================================
-% Pacotes 
-%====================================================================
-%====================================================================
-%                     Definições dos Pacotes 
-%====================================================================
-%====================================================================
-% Definição do tipo de codificação de caracteres do editor 
+% Pacotes
 %====================================================================
 \usepackage[utf8]{inputenc}
-%====================================================================
-% Definição do tipo de codificação de caracteres para os arquivos 
-% de saída
-%====================================================================
 \usepackage[T1]{fontenc}
-%====================================================================
-% Definição do idioma utilizado para o desenvolvimento do texto. 
-% O pacote babel permite que padrões do idioma sejam respeitados.
-%====================================================================
 \usepackage[brazil]{babel}
-%\usepackage[portuguese]{babel}
 \addto\captionsbrazil{
     \renewcommand{\figurename}{Figura}
 }
-%====================================================================
-% Pacotes para o tratamento de expressões matemáticas.
-%====================================================================
 \usepackage{bbold}
 \usepackage{dsfont}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amstext,amscd}
 \usepackage{latexsym,bm,mathrsfs,eucal,esint}
 \DeclareSymbolFontAlphabet{\mathbf}{operators}
 \DeclareSymbolFontAlphabet{\mathbf}{symbols}
-%====================================================================
-% Pacote que permite a customização dos cabeçalhos e 
-% rodapés do texto.
-%====================================================================
 \usepackage[sc,bf,outermarks,pagestyles]{titlesec}
 \usepackage{titletoc}
-%====================================================================
-% Pacote que permite fazer o tratamento de cores.
-%====================================================================
-\usepackage[usenames,dvipsnames,table,svgnames]{xcolor}
-%====================================================================
-% Pacote que permite fazer boxes e frames customizados.
-%====================================================================
+\usepackage[dvipsnames,table,svgnames]{xcolor}
 \usepackage{tikz}
 \usepackage[framemethod=Tikz]{mdframed}
 \usepackage{tcolorbox}
 \usepackage{boxedminipage}
-%====================================================================
-% Pacote que permite criar frames ao redor de textos.
-%====================================================================
 \usepackage{fancybox}
-%====================================================================
-% Pacote que permite inserir textos de teste.
-%====================================================================
 \usepackage{lipsum}
-%====================================================================
-% Pacote para dimensionamento das páginas dos texto.
-%====================================================================
 \usepackage{geometry}
-%====================================================================
-% Pacote que permite escrever endereçoes de e-mail e sites na 
-% internet.
-%====================================================================
 \usepackage[hyphens]{url}
-%====================================================================
-% Pacote que permite a inserção de apêndices no sumário
-%====================================================================
 \usepackage[titletoc]{appendix}
-%====================================================================
-% Pacote para inserção da página da referência no sumário.
-%====================================================================
 \usepackage[nottoc]{tocbibind}
-%====================================================================
-% Pacotes para o tratamento de tabelas.
-%====================================================================
 \usepackage{array,booktabs,tabularx,tabulary}
 \usepackage{longtable,ctable,multirow}
-\usepackage{arydshln} 
-%====================================================================
-% Pacotes que permite criar textos com duas ou mais colunas.
-%====================================================================
-\usepackage{multicol} 
-
-
-%====================================================================
-% Pacote para tratamento de números e sistemas de unidades no SI.
-%====================================================================
+\usepackage{arydshln}
+\usepackage{multicol}
 \usepackage{xspace,xkeyval,siunitx}
 \usepackage{gensymb}
-%====================================================================
-% Pacote para definição de espaçamento vertical entre linhas.
-%====================================================================
 \usepackage{setspace}
-%====================================================================
-% Pacote que força as figuras a aparecerem depois de serem 
-% referenciados.
-%====================================================================
 \usepackage{flafter}
-%====================================================================
-% Pacote que permite a inserção de figuras.
-%====================================================================
 \usepackage{graphicx}
-%====================================================================
-% Pacote que permite a inserção de grupos de figuras lado a lado.
-%====================================================================
 \usepackage{subfigure}
-%====================================================================
-% Pacote que permite a enumeração das linhas.
-%====================================================================
 \usepackage{lineno}
-%====================================================================
-% Pacote para trabalhar com o pstricks.
-%====================================================================
 \usepackage{pstricks}
 \usepackage{pstricks-add}
 \usepackage{pst-plot}
 \usepackage{pst-3dplot}
-%====================================================================
-% Pacote para indentar todo início de seção.
-%====================================================================
 \usepackage{indentfirst}
-%====================================================================
-% Pacote para customização de captions.
-%====================================================================
 \usepackage[small,sc,bf,hang]{caption}
-
-%====================================================================
-% Pacote que permite fazer links para navegação dentro do texto.
-%====================================================================
 \usepackage[colorlinks]{hyperref}
-%====================================================================
-% Pacote que permite utilizar fontes de tamanhos arbitrários dentro 
-% do texto.
-%====================================================================
 \usepackage{fix-cm}
-%====================================================================
-% Pacote que permite rotacionar tabelas e figuras.
-%====================================================================
 \usepackage{rotating}
-%====================================================================
-% Pacotes que permitem customizar enumerações.
-%====================================================================
 \usepackage{enumerate}
 \usepackage{paralist}
-%====================================================================
-% Pacote que força as figuras a aparecerem dentro das seções 
-% onde são referenciadas.
-%====================================================================
 \usepackage[section]{placeins}
-%====================================================================
-% Pacotes que força o posiciomento de uma figura ou tabela em 
-% um dado local no texto.
-%====================================================================
 \usepackage{float}
-%====================================================================
-% Configurações de estilo e idioma para as referências 
-% bibliográficas.
-%====================================================================
 \usepackage[sort&compress,square,comma,numbers,authoryear]{natbib}
 \usepackage[fixlanguage]{babelbib}
-%\usepackage[bibencoding=utf8,style=authoryear,
-%backend=biber,natbib=true,sorting=nyt,style=authoryear,
-%citestyle=authoryear,firstinits=true]{biblatex}
-%\DeclareNameAlias{author}{last-first}
-%\DefineBibliographyStrings{brazilian}{%
-%references = {Referências Bibliográficas}}
-%\setlength\bibitemsep{1.5\itemsep}
-%====================================================================
-% Pacote para trabalhar com a inserção de lista de símbolos.
-%====================================================================
-%\usepackage[acronym,nopostdot,toc]{glossaries}
-%====================================================================
-% Pacote para trabalhar com a inserção de lista de símbolos.
-%====================================================================
 \usepackage[intoc,portuguese]{nomencl}
-%====================================================================
-% Pacote auxiliar para trabalhar com inserção de lista de símbolos.
-% Permite a criação de grupos com significados diferentes ao
-% ao criar listas de símbolos e nomenclaturas.
-%====================================================================
 \usepackage{etoolbox}
-%====================================================================
-% Pacote para definir o tipo de fonte.
-%====================================================================
 \usepackage{avant}
+
 %====================================================================
-% Definição de cores. Utiliza o pacote xcolor.
+% Definição de cores
 %====================================================================
 \definecolor{safira}{RGB}{15,82,186}
 \definecolor{azulclaro}{RGB}{173,216,230}
@@ -203,18 +72,13 @@
 \definecolor{verdeclaro}{RGB}{0,255,0}
 \definecolor{amarelo}{RGB}{255,255,0}
 \definecolor{amareloclaro}{RGB}{255,255,224}
-\definecolor{amarelo}{RGB}{255,255,0}
 \definecolor{amarelomedio}{RGB}{255,255,180}
 \definecolor{branco}{RGB}{255,255,255}
+
 %====================================================================
-%               Definições de Layout da Monografia
+% Definições de Layout
 %====================================================================
-% Dimensionamento da página.
-%====================================================================
-\geometry{dvips,a4paper,text={17cm,25.7cm},centering}
-%====================================================================
-% Definição para os ambientes do amsthm.
-%====================================================================
+\geometry{a4paper,text={17cm,25.7cm},centering}
 \newtheorem{definicao}{Definição}
 \newtheorem{teorema}{Teorema}
 \newtheorem{lema}{Lema}
@@ -226,8 +90,9 @@
 \newtheorem{caso}{Caso}
 \newtheorem{observacao}{Observação}
 \newtheorem{propriedade}{Propriedade}
+
 %====================================================================
-% Cabeçalhos e rodapés.
+% Cabeçalhos e rodapés
 %====================================================================
 \newpagestyle{cabecalhorodape}[\small\bfseries\scshape]
 {\headrule\sethead[\usepage][][\chaptertitle]
@@ -235,15 +100,17 @@
 \footrule\setfoot[]
 [Universidade Federal de Uberlândia - Faculdade de Matemática][]
 {}{Bacharelado em Estatística}{}}
+
 %====================================================================
-% Formatação dos capítulos 
+% Formatação dos capítulos
 %====================================================================
 \titleformat{\chapter}[hang]
 {\normalfont\huge\bfseries\scshape}{\thechapter.\hspace*{0.25cm}}{0em}{\huge}
+
 %====================================================================
-% Novos Comandos e renomeação de comandos
+% Novos Comandos
 %====================================================================
-\newcommand{\ula}{\textsuperscript{\b{a}}$\,$} 
+\newcommand{\ula}{\textsuperscript{\b{a}}$\,$}
 \newcommand{\ulo}{\textsuperscript{\b{o}}$\,$}
 \newcommand{\otoprule }{\midrule[\heavyrulewidth]}
 \newcommand{\aprod}{\left\langle}
@@ -265,11 +132,11 @@
 {{\textbf{{Keywords:}}\hspace*{0.2cm}\textrm{#1}.}}
 \end{minipage}
 }
+
 %====================================================================
-% Redefinição para o comando \chapter para inserir cabeçalho e 
-% rodapé no início dos capítulos.
+% Redefinição para o comando \chapter e ambientes especiais
 %====================================================================
-\makeatletter
+\makeatletter % INÍCIO DO BLOCO ESPECIAL
 \newcommand*{\saved@chapter}{}
 \let\saved@chapter\chapter
 \renewcommand*{\chapter}{%
@@ -292,184 +159,139 @@
   \toks@\expandafter{\the\toks@[{#1}]}%
   \final@chapter
 }
-\makeatother
+
+\newenvironment{resumo-portugues}
+{
+\saved@chapter*{Resumo}
+\thispagestyle{empty}
+}
+{
+\cleardoublepage
+}
+
+\newenvironment{resumo-ingles}
+{
+\saved@chapter*{Abstract}
+\thispagestyle{empty}
+}
+{
+\cleardoublepage
+}
+\makeatother % FIM DO BLOCO ESPECIAL
+
 %====================================================================
-% Criação de dois grupos de nomenclaturas, sendo uma para lista 
-% de abreviações e outra de símbolos.
+% Criação de grupos de nomenclaturas
 %====================================================================
 \renewcommand\nomgroup[1]{%
   \item[\Large\scshape\bfseries
   \ifstrequal{#1}{A}{Lista de Abreviações}{%
   \ifstrequal{#1}{S}{Lista de Símbolos}{}}%
-]\vspace{10pt}} % Para dar espaço entre dois grupos de listas.
+]\vspace{10pt}}
+
 %====================================================================
 % Definições do pacote hyperref
 %====================================================================
 \hypersetup{
-    bookmarks=true,       % show bookmarks bar?
-    unicode=true,         % non-Latin characters in Acrobat bookmarks
-    pdftoolbar=true,      % show Acrobat’s toolbar?
-    pdfmenubar=true,      % show Acrobat’s menu?
-    pdffitwindow=false,   % window fit to page when opened
-    pdfstartview={FitH},  % fits the width of the page to the window
-    pdftitle={My title},  % title
-    pdfauthor={Author},   % author
-    pdfsubject={Subject}, % subject of the document
-    pdfcreator={Creator}, % creator of the document
-    pdfproducer={Producer},% producer of the document
-    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
-    pdfnewwindow=true,    % links in new window
-    colorlinks=true,      % false: boxed links; true: colored links
-    linkcolor=blue,       % color of internal links
-    citecolor=blue,       % color of links to bibliography
-    filecolor=magenta,    % color of file links
-    urlcolor=blue         % color of external links
+    bookmarks=true,
+    unicode=true,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    pdffitwindow=false,
+    pdfstartview={FitH},
+    pdftitle={My title},
+    pdfauthor={Author},
+    pdfsubject={Subject},
+    pdfcreator={Creator},
+    pdfproducer={Producer},
+    pdfkeywords={keyword1} {key2} {key3},
+    pdfnewwindow=true,
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=magenta,
+    urlcolor=blue
 }
+
 %====================================================================
-% Definições de comandos e ambientes 
+% Comando da Capa
 %====================================================================
-\newcommand{\capa}[6]
-{
+\newcommand{\capa}[6]{
+%--- PÁGINA 1: CAPA PRINCIPAL ---
 \begin{titlepage}
-\begin{center}
-\begin{minipage}[t][\textheight][t]{\textwidth}
-\begin{center}
-\begin{tabular}{c}
-\includegraphics[scale=0.7]{Imagens/logo-ufu.pdf}\\[0.75cm]
-\Large{\bfseries Universidade Federal de Uberlândia}\\
-\Large{\bfseries Faculdade de Matemática}\\[0.75cm]
-\Large{\bfseries Bacharelado em Estatística}
-\end{tabular}
-\end{center}
-\vspace*{3cm}%
-\begin{center}
-\begin{minipage}[c][4cm][c]{16cm}
-{
-\bfseries\LARGE
-\begin{center}
-
-{#1}
-
-\end{center}
-}
-\end{minipage}
-\end{center}
-
-\vspace*{0.75cm}
-
-\begin{center}
-{
-
-\Large{\bfseries #2}
-
-}
-\end{center}
-\vfill
-\begin{center}
-\begin{large}
-\begin{tabular}{c}
-\Large{\bfseries Uberlândia-MG}\\[0.25cm]
-\Large{\bfseries #3}\\
-\end{tabular}
-\end{large}
-\end{center}
-\end{minipage}
-\end{center}
-
+  \begin{minipage}[t][\textheight][t]{\textwidth}
+    \hbox to \textwidth{%
+      \includegraphics[height=2.5cm]{Imagens/brasao_republica.png}%
+      \hfill
+      \includegraphics[height=2.5cm]{Imagens/logo-ufu.pdf}%
+    }
+    \vspace*{1.5cm}
+    \begin{center}
+      \Large\bfseries
+      Ministério da Educação \\
+      Universidade Federal de Uberlândia \\
+      IME - Instituto de Matemática e Estatística \\
+      Graduação em Estatística
+    \end{center}
+    \vspace*{\fill}
+    \begin{center}
+      \Huge\bfseries #1
+    \end{center}
+    \vspace*{\fill}
+    \begin{center}
+      \Large\bfseries #2
+    \end{center}
+    \vfill
+    \begin{center}
+      \Large\bfseries
+      Uberlândia-MG \\
+      #3
+    \end{center}
+  \end{minipage}
 \end{titlepage}
-
 \thispagestyle{empty}
-\let\cleardoublepage\clearpage
-\thispagestyle{empty}
-
-
-
+%--- PÁGINA 2: FOLHA DE ROSTO ---
 \begin{titlepage}
-\begin{center}
-\begin{minipage}[t][\textheight][t]{\textwidth}
-\begin{center}
-\begin{tabular}{c}
-\Large{\bfseries{#2}}\\
-\end{tabular}
-\end{center}
-\vspace*{5cm}%
-\begin{center}
-\begin{minipage}[c][4cm][c]{16cm}
-{
-\bfseries\LARGE
-\begin{center}
-
-{#1}
-
-\end{center}
-}
-\end{minipage}
-\end{center}
-
-\vspace*{3cm}
-
-\begin{flushright}
-\begin{minipage}[c][5cm][c]{9cm}
-{
-\begin{onehalfspacing}
-Relatório com resultados parciais do Trabalho de Conclusão de Curso (TCC1) apresentado na Faculdade de Matemática da Universidade Federal de Uberlândia como requisito básico para a conclusão do Curso de Estatística.
-
-\vspace*{0.75cm}
-
-Orientador: {#4}
-
-\end{onehalfspacing}
-}
-\end{minipage}
-\end{flushright}
-\vfill
-\begin{center}
-\begin{large}
-\begin{tabular}{c}
-\Large{\bfseries Uberlândia-MG}\\[0.25cm]
-\Large{\bfseries #3}\\
-\end{tabular}
-\end{large}
-\end{center}
-\end{minipage}
-\end{center}
+  \begin{center}
+    \begin{minipage}[t][\textheight][t]{\textwidth}
+      \begin{center}
+        \begin{tabular}{c}
+          \Large{\bfseries{#2}}\\
+        \end{tabular}
+      \end{center}
+      \vspace*{5cm}%
+      \begin{center}
+        \begin{minipage}[c][4cm][c]{16cm}
+          {
+          \bfseries\LARGE
+          \begin{center}
+            {#1}
+          \end{center}
+          }
+        \end{minipage}
+      \end{center}
+      \vspace*{3cm}
+      \begin{flushright}
+        \begin{minipage}[c][5cm][c]{9cm}
+          {
+          \begin{onehalfspacing}
+            Trabalho de Conclusão de Curso apresentado à Universidade Federal de Uberlândia, como parte das exigências para a obtenção do Titulo de bacharel em Estatística.
+            \vspace*{0.75cm}
+            Orientador: {#4}
+          \end{onehalfspacing}
+          }
+        \end{minipage}
+      \end{flushright}
+      \vfill
+      \begin{center}
+        \begin{large}
+          \begin{tabular}{c}
+            \Large{\bfseries Uberlândia-MG}\\[0.25cm]
+            \Large{\bfseries #3}\\
+          \end{tabular}
+        \end{large}
+      \end{center}
+    \end{minipage}
+  \end{center}
 \end{titlepage}
-
-}
-\newenvironment{agradecimentos}
-{
-\chapter*{Agradecimentos}
 \thispagestyle{empty}
 }
-{
-\cleardoublepage
-}
-\newenvironment{resumo-portugues}
-{
-\chapter*{Resumo}
-\thispagestyle{empty}
-}
-{
-\cleardoublepage
-}
-\newenvironment{resumo-ingles}
-{
-\chapter*{Abstract}
-\thispagestyle{empty}
-}
-{
-\cleardoublepage
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

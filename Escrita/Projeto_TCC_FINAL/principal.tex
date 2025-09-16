@@ -1,219 +1,197 @@
-%====================================================================
-% Universidade Federal de Uberlândia
-% Faculdade de Matemática
-% Curso: Bacharelado em Estatística
-% Modelo para elaboração de monografia referentes aos trabalhos de
-% conclusão de curso do Bacharelado em Estatística
-% Autor: Prof. Dr. Alessandro Alves Santana
-%====================================================================
-\documentclass[12pt,openright]{report}
-%====================================================================
-% Pacote de estilo que tem por finalidade carregar pacotes do LaTeX
-% bem como definir configurações do texto da monografia. 
-%====================================================================
-\usepackage{estilo}
-%====================================================================
-% Inserção do arquivo com a lista de abreviaturas e símbolos.
-%====================================================================
-\makenomenclature
-%====================================================================
-% Documento Principal
-%====================================================================
-\begin{document}
-\tolerance=5000
-%====================================================================
-% Para que as linhas do texto sejam numeradas com a finalidade 
-% de facilitar a correção pelo orientador, basta descomentar o
-% o comando abaixo. Esse comando faz com que o arquivo pdf gerado 
-% após a compilação sem erros tenham as linhas da monografia sejam
-% enumeradas. Com as linhas numeradas o orientador poderá localizar 
-% e descrever melhor para os orientandos os locais do texto que 
-% exigem correção.
-%====================================================================
-% \linenumbers
+    %====================================================================
+    % Universidade Federal de Uberlândia
+    % Faculdade de Matemática
+    % Curso: Bacharelado em Estatística
+    % Modelo para elaboração de monografia referentes aos trabalhos de
+    % conclusão de curso do Bacharelado em Estatística
+    % Autor: Prof. Dr. Alessandro Alves Santana
+    %====================================================================
+    \documentclass[12pt,openright]{report}
+    %====================================================================
+    % Pacote de estilo que tem por finalidade carregar pacotes do LaTeX
+    % bem como definir configurações do texto da monografia. 
+    %====================================================================
+    \usepackage{estilo}
+    %====================================================================
+    % Inserção do arquivo com a lista de abreviaturas e símbolos.
+    %====================================================================
+    \makenomenclature
+    %====================================================================
+    % Documento Principal
+    %====================================================================
+    \begin{document}
+    \tolerance=5000
+    %====================================================================
+    % Para que as linhas do texto sejam numeradas com a finalidade 
+    % de facilitar a correção pelo orientador, basta descomentar o
+    % o comando abaixo. Esse comando faz com que o arquivo pdf gerado 
+    % após a compilação sem erros tenham as linhas da monografia sejam
+    % enumeradas. Com as linhas numeradas o orientador poderá localizar 
+    % e descrever melhor para os orientandos os locais do texto que 
+    % exigem correção.
+    %====================================================================
+    % \linenumbers
 
-%=================================================================
+    %=================================================================
 
-\begin{titlepage}
-    \bfseries\LARGE
-    \centering
-    \vspace*{3cm} % Espaço vertical
+    %====================================================================
+    % O comando \capa tem 6 argumentos de entrada os quais são 
+    % descritos abaixo. Tem por função gerar a capa da monografia. 
+    %
+    % \capa
+    % {título da monografia}
+    % {nome do orientando}
+    % {ano de defesa da monografia}
+    % {nome do orientador}
+    % {nome do segundo membro da banca}
+    % {nome do terceiro membro da banca}
+    %
+    % Observações: 
+    %
+    %  1- Escrever o título do trabalho em letras maíusculas.
+    %       Exemplo: ANÁLISE DE REGRESSÃO EM PROBLEMAS DE FÍSICA
+    %  2- Nome do aluno com iniciais em letras maiúsculas.
+    %       Exemplo: Alberto Barbosa da Cunha
+    %  3- Ano da defesa: 
+    %       Exemplo: 2018
+    %  4- Nome do Orientador e demais membros da banca de defesa: 
+    %     Escrever o nome apenas com as iniciais em letras maiúsculas 
+    %     como no nome do aluno.
+    %       Exemplo: João Carlos Silva de Almeida    
+    %====================================================================
+    \capa
     {ANÁLISE DE DESEMPENHO DE CORREDORES UTILIZANDO DADOS DO STRAVA: UMA ABORDAGEM DE REGRESSÃO LINEAR.}
-    \vspace{2cm} % Espaço vertical
-    % {\Large Subtítulo ou qualquer outra informação}\par
-    \vfill
-    \begin{center}
-    \begin{large}
-    \begin{tabular}{c}
-    \Large{\bfseries Uberlândia-MG}\\[0.25cm]
-    \Large{\bfseries 2024}\\
-    \end{tabular}
-    \end{large}
-    \end{center}
-\end{titlepage}
+    {João Marcos de Souza Matos}
+    {2025}
+    {Pedro Franklin Cardoso Silva}
+    %{Nome completo do segundo membro da banca de defesa}
+    %{Nome completo do terceiro membro da banca de defesa}
+    %====================================================================
+    % Agradecimentos: Os agradecimentos deverão ser escritos dentro do 
+    % arquivo agradecimentos.tex. 
+    %====================================================================     
+    \pagenumbering{Roman} % Inicia a contagem em algarismos romanos
+    
+    \input{pretextual/agradecimentos.tex}
+    \cleardoublepage
+    %====================================================================
+    % Resumo em português: O resumo em português deverá ser escrito 
+    % dentro do arquivo resumo.tex.
+    %====================================================================
+    % Observação: O arquivo resumo.tex já existe dentro da 
+    % pasta monografia. O que o aluno precisa fazer é abrí-lo 
+    % e preenchê-lo com o texto do resumo. Não esqueça de 
+    % de colocar as palavras-chave em português. No arquivo 
+    % resumo.tex isso poderá ser observado. 
+    %====================================================================
+    %\input{resumo}
+    %====================================================================
+    % Resumo em inglês: O resumo em inglês deverá ser escrito dentro 
+    % do arquivo abstract.tex.
+    %====================================================================
+    % Observação: O arquivo abstract.tex já existe dentro da 
+    % pasta monografia. O que o aluno precisa fazer é abrí-lo 
+    % e preenchê-lo com o texto do abstract. Não esqueça de 
+    % de colocar as palavras-chave em inglês. No arquivo 
+    % abstract.tex isso poderá ser observado. 
+    %====================================================================
+    %\input{abstract}
+    %====================================================================
+    % Comando para inclusão do sumário
+    %====================================================================
+    %\tableofcontents
+    %\thispagestyle{empty}
+    %\cleardoublepage
+    %====================================================================
+    % Comando para inclusão da lista de figuras.
+    %==================================================================== 
+    % Observação: Caso o trabalho não tenha lista de figuras, comente 
+    % as 3 linhas abaixo.
+    %====================================================================
+    %\pagenumbering{Roman}
+    %\listoffigures
+    %\cleardoublepage
+    %====================================================================
+    % Comando para inclusão da lista de tabelas.
+    %====================================================================
+    % Observação: Caso o trabalho não tenha lista de tabelas, comente 
+    % as 2 linhas abaixo.
+    %====================================================================
+    %\listoftables
+    %\cleardoublepage
+    %====================================================================
+    % Comando para inclusão da lista de abreviações e símbolos.
+    %====================================================================
+    % Observação: Caso o trabalho não tenha lista de abreviações, 
+    % ou lista de símbolos, comente as 2 linhas abaixo.
+    %====================================================================
+    %\printnomenclature
+    %\cleardoublepage
+    %====================================================================
+    % Capítulos da monografia.
+    %====================================================================
+    \onehalfspacing
+    \clearpage
+    \pagenumbering{arabic}
+    \pagestyle{cabecalhorodape}
 
+    % Comando para inclusão do sumário
+    %====================================================================
+    \tableofcontents
+    \thispagestyle{empty}
+    \cleardoublepage
+    %====================================================================
+    %====================================================================
+    % Introdução.
+    %====================================================================
+    \newpage
+    \input{Capitulos/introducao}
+    %====================================================================
+    % Desenvolvimento.
+    %====================================================================
+    \newpage
+    \input{Capitulos/Justificativa.tex}
+    %====================================================================
+    % Fundamentação Teórica. 
+    %====================================================================
+    \newpage
+    \input{Capitulos/Objetivos.tex}
 
+    %====================================================================
+    % Metodologia.
+    %====================================================================
+    \newpage
+    \input{Capitulos/Metodologia.tex}
 
-%====================================================================
-% O comando \capa tem 6 argumentos de entrada os quais são 
-% descritos abaixo. Tem por função gerar a capa da monografia. 
-%
-% \capa
-% {título da monografia}
-% {nome do orientando}
-% {ano de defesa da monografia}
-% {nome do orientador}
-% {nome do segundo membro da banca}
-% {nome do terceiro membro da banca}
-%
-% Observações: 
-%
-%  1- Escrever o título do trabalho em letras maíusculas.
-%       Exemplo: ANÁLISE DE REGRESSÃO EM PROBLEMAS DE FÍSICA
-%  2- Nome do aluno com iniciais em letras maiúsculas.
-%       Exemplo: Alberto Barbosa da Cunha
-%  3- Ano da defesa: 
-%       Exemplo: 2018
-%  4- Nome do Orientador e demais membros da banca de defesa: 
-%     Escrever o nome apenas com as iniciais em letras maiúsculas 
-%     como no nome do aluno.
-%       Exemplo: João Carlos Silva de Almeida    
-%====================================================================
-\capa
-{ANÁLISE DE DESEMPENHO DE CORREDORES UTILIZANDO DADOS DO STRAVA: UMA ABORDAGEM DE REGRESSÃO LINEAR.}
-{João Marcos de Souza Matos}
-{2024}
-{Pedro Franklin Cardoso Silva}
-%{Nome completo do segundo membro da banca de defesa}
-%{Nome completo do terceiro membro da banca de defesa}
-%====================================================================
-% Agradecimentos: Os agradecimentos deverão ser escritos dentro do 
-% arquivo agradecimentos.tex. 
-%====================================================================     
-% Observação: O arquivo agradecimentos.tex já existe dentro da 
-% pasta monografia. O que o aluno precisa fazer é abrí-lo 
-% e preenchê-lo com o texto dos agradecimentos.  
-%====================================================================
-% \input{agradecimentos}
-%====================================================================
-% Resumo em português: O resumo em português deverá ser escrito 
-% dentro do arquivo resumo.tex.
-%====================================================================
-% Observação: O arquivo resumo.tex já existe dentro da 
-% pasta monografia. O que o aluno precisa fazer é abrí-lo 
-% e preenchê-lo com o texto do resumo. Não esqueça de 
-% de colocar as palavras-chave em português. No arquivo 
-% resumo.tex isso poderá ser observado. 
-%====================================================================
-%\input{resumo}
-%====================================================================
-% Resumo em inglês: O resumo em inglês deverá ser escrito dentro 
-% do arquivo abstract.tex.
-%====================================================================
-% Observação: O arquivo abstract.tex já existe dentro da 
-% pasta monografia. O que o aluno precisa fazer é abrí-lo 
-% e preenchê-lo com o texto do abstract. Não esqueça de 
-% de colocar as palavras-chave em inglês. No arquivo 
-% abstract.tex isso poderá ser observado. 
-%====================================================================
-%\input{abstract}
-%====================================================================
-% Comando para inclusão do sumário
-%====================================================================
-%\tableofcontents
-%\thispagestyle{empty}
-%\cleardoublepage
-%====================================================================
-% Comando para inclusão da lista de figuras.
-%==================================================================== 
-% Observação: Caso o trabalho não tenha lista de figuras, comente 
-% as 3 linhas abaixo.
-%====================================================================
-%\pagenumbering{Roman}
-%\listoffigures
-%\cleardoublepage
-%====================================================================
-% Comando para inclusão da lista de tabelas.
-%====================================================================
-% Observação: Caso o trabalho não tenha lista de tabelas, comente 
-% as 2 linhas abaixo.
-%====================================================================
-%\listoftables
-%\cleardoublepage
-%====================================================================
-% Comando para inclusão da lista de abreviações e símbolos.
-%====================================================================
-% Observação: Caso o trabalho não tenha lista de abreviações, 
-% ou lista de símbolos, comente as 2 linhas abaixo.
-%====================================================================
-\printnomenclature
-%\cleardoublepage
-%====================================================================
-% Capítulos da monografia.
-%====================================================================
-\onehalfspacing
-\clearpage
-\pagenumbering{arabic}
-\pagestyle{cabecalhorodape}
+    %====================================================================
+    % Resultados Preliminares
+    %====================================================================
+    \newpage
+    \input{Capitulos/Cronograma.tex}
 
-% Comando para inclusão do sumário
-%====================================================================
-\tableofcontents
-\thispagestyle{empty}
-\cleardoublepage
-%====================================================================
+    %====================================================================
+    % DESCRIÇÃO DE ATIVIDADES E AVALIAÇÃO
+    %====================================================================
+    \newpage
+    \input{Capitulos/Cronograma.tex}
 
-%====================================================================
-% Introdução.
-%====================================================================
-\newpage
-\input{Capitulos/introducao}
-%====================================================================
-% Desenvolvimento.
-%====================================================================
-\newpage
-\input{Capitulos/Justificativa.tex}
-%====================================================================
-% Fundamentação Teórica. 
-%====================================================================
-\newpage
-\input{Capitulos/Objetivos.tex}
+    %====================================================================
+    % Referências bibliográficas
+    %====================================================================
+    \newpage
+    \def\thispagestyle#1{}
+    %\bibliographystyle{babplain-fl}
+    \bibliographystyle{plainnat}
+    \bibliography{Bibliografia/bibliografia}
+    %====================================================================
+    % Apêndices da monografia
+    % Pode ser que o trabalho tenha vários apêndices. Coloque os 
+    % apêndices em uma pasta e dentro da pasta %crie o arquivo tex com o 
+    % texto associado ao apêndice. 
+    %====================================================================
+    %\begin{appendices}
+    %\input{apendices/apendice1/apendice1.tex}
+    %\input{apendices/apendice2/apendice2.tex}
+    %\end{appendices}
 
-%====================================================================
-% Metodologia.
-%====================================================================
-\newpage
-\input{Capitulos/Metodologia.tex}
-
-%====================================================================
-% Resultados Preliminares
-%====================================================================
-\newpage
-\input{Capitulos/Cronograma.tex}
-
-%====================================================================
-% DESCRIÇÃO DE ATIVIDADES E AVALIAÇÃO
-%====================================================================
-\newpage
-\input{Capitulos/Cronograma.tex}
-
-%====================================================================
-% Referências bibliográficas
-%====================================================================
-\newpage
-\def\thispagestyle#1{}
-%\bibliographystyle{babplain-fl}
-\bibliographystyle{plainnat}
-\bibliography{Bibliografia/bibliografia}
-%====================================================================
-% Apêndices da monografia
-% Pode ser que o trabalho tenha vários apêndices. Coloque os 
-% apêndices em uma pasta e dentro da pasta %crie o arquivo tex com o 
-% texto associado ao apêndice. 
-%====================================================================
-%\begin{appendices}
-%\input{apendices/apendice1/apendice1.tex}
-%\input{apendices/apendice2/apendice2.tex}
-%\end{appendices}
-
-\end{document}
+    \end{document}
