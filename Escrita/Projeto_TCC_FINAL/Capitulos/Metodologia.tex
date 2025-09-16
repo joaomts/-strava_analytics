@@ -1,6 +1,6 @@
 \chapter{Metodologia}
 \label{chap:metodologia}
-Este capítulo apresenta a arquitetura metodológica utilizada para a condução desta pesquisa. A estrutura detalha o delineamento da pesquisa, a origem e natureza dos dados, os métodos de coleta e tratamento dos dados, os procedimentos de pré-processamento e agregação, a engenharia de variáveis desenvolvida para aprofundar a análise e, por fim, as técnicas de estatística inferencial empregadas para testar hipóteses e construir um modelo preditivo. Cada etapa é descrita com o objetivo de garantir a transparência e a replicabilidade do estudo. Além de especificar softwares e bibliotecas utilizadas.
+As informações a seguir detalham as etapas da metodologia utilizada para a condução deste estudo. Sendo elas: o delineamento da pesquisa, a origem e natureza dos dados, os métodos de coleta e tratamento dos dados, os procedimentos de pré-processamento e agregação, a engenharia de variáveis desenvolvida para aprofundar a análise e, por fim, as técnicas de estatística inferencial empregadas para testar hipóteses e construir um modelo preditivo. Cada etapa é descrita com o objetivo de garantir a transparência e a replicabilidade do estudo. Além de especificar softwares e bibliotecas utilizadas.
 
 \begin{figure}[h!]
     \centering
@@ -33,13 +33,6 @@ A fim de garantir a consistência e a padronização das variáveis geográficas
 \label{subsec:scraping}
 Para a extração dos dados de desempenho e demográficos dos atletas, foi desenvolvida uma solução de \emph{web scraping} utilizando a linguagem de programação Python e a biblioteca \texttt{Selenium}, que permite a automação de navegadores web. O processo exigiu a autenticação em uma conta de usuário com assinatura paga na plataforma Strava para acessar os dados detalhados. O fluxo de extração foi estruturado da seguinte forma:
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.7\textwidth]{Imagens/fluxo_webscraping.png}
-    \caption{Fluxograma do processo de Web Scraping. Fonte: Elaborado pelo autor (2025).}
-    \label{fig:fluxograma}
-\end{figure}
-
 \begin{enumerate}
     \item \textbf{Coleta de Links:} O ponto de partida foram as páginas de resultados (tabelas de classificação) das edições de 2022 e 2023 da prova. O script navegou por estas páginas e coletou as URLs individuais de cada atividade de atleta registrada.
     
@@ -50,6 +43,14 @@ Para a extração dos dados de desempenho e demográficos dos atletas, foi desen
     \item \textbf{Gestão de Desafios Técnicos:} Durante a execução, foi observado que a plataforma poderia apresentar lentidão no carregamento de elementos. Para contornar essa questão, pausas estratégicas de 5 segundos (\texttt{time.sleep(5)}) foram inseridas no código para garantir que as páginas estivessem completamente carregadas antes da extração, aumentando a robustez do processo.
 \end{enumerate}
 Importante ressaltar que a coleta foi restrita a dados de perfis e atividades publicamente compartilhados pelos usuários.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Imagens/fluxo_webscraping.png}
+    \caption{Fluxograma do processo de Web Scraping.}
+    \label{fig:fluxograma_scraping}
+    \caption*{Fonte: Elaborado pelo autor (2025).}
+\end{figure}
 
 \subsection{Limpeza e Estruturação dos Dados}
 \label{subsec:limpeza}
@@ -64,9 +65,9 @@ Após a extração, foi realizado um rigoroso processo de limpeza e estruturaç�
     
     \item \textbf{Tratamento de Valores Ausentes:} A estratégia de tratamento de dados faltantes foi definida conforme a variável:
     \begin{itemize}
-        \item \textbf{Frequência Cardíaca:} A coluna foi removida do conjunto de dados devido ao alto percentual de valores ausentes.
-        \item \textbf{Faixa de Peso:} Com aproximadamente 12,44\% de dados faltantes, optou-se por imputar os valores nulos com a categoria ``Não Informado'', por se tratar de uma variável relevante para a análise.
-        \item \textbf{Sexo e Faixa Etária:} Devido ao baixo percentual de ausência (inferior a 10\%), os atletas (linhas) sem essas informações foram removidos do estudo (exclusão \emph{listwise}).
+        \item \textbf{Frequência Cardíaca:} Dada a alta proporção de valores ausentes (superior a 70\%), indicando que a maioria dos atletas não utilizou ou não compartilhou dados de um monitor cardíaco, a variável foi removida do conjunto de dados para evitar a introdução de viés por meio de imputações complexas e pouco confiáveis.
+        \item \textbf{Faixa de Peso:} Com aproximadamente 12,44\% de ausência, optou-se por tratar a ausência como uma informação em si. Foi criada a categoria ``Não Informado'', permitindo que o modelo analise se a própria decisão de não informar o peso está associada ao desempenho.
+        \item \textbf{Sexo e Faixa Etária:} Com percentuais de ausência baixos (inferiores a 10\%), aplicou-se a técnica de exclusão \textit{listwise}. Esta abordagem foi considerada apropriada sob a suposição de que os dados eram ausentes completamente ao acaso (MCAR, \textit{Missing Completely at Random}), e que a remoção de um pequeno número de observações não introduziria um viés significativo na amostra final \citep[para uma discussão, ver][]{rubin1976}.
     \end{itemize}
 \end{enumerate}
 Ao final deste processo, consolidou-se um conjunto de dados final, limpo e estruturado no formato \emph{long}, contendo 109 atletas e 36 observações (quilômetros) para cada um.
@@ -114,14 +115,30 @@ A análise dos dados foi conduzida por meio de um conjunto de técnicas estatís
 Inicialmente, foi realizada uma análise descritiva com o uso de medidas de tendência central (média, mediana) e dispersão (desvio padrão) para as variáveis quantitativas, e distribuições de frequência para as variáveis categóricas. Visualizações gráficas como histogramas, diagramas de dispersão e \emph{boxplots} foram utilizadas para compreensão visual dos dados e distribuição das variáveis.
 
 \subsection{Testes de Hipóteses}
+
+A comparação do tempo final entre diferentes grupos demográficos foi realizada por meio de testes de hipóteses não-paramétricos. A escolha por essa abordagem foi motivada pela rejeição da hipótese de normalidade da variável resposta \texttt{Tempo\_Final\_seg} nos subgrupos, verificada pelo teste de Shapiro-Wilk para um nível de significância $\alpha = 0.05$. A estatística não-paramétrica é robusta a distribuições não-normais, baseando-se nos postos (\textit{ranks}) das observações em vez de seus valores absolutos \citep{siegel1988}.
+
 \begin{itemize}
-    \item \textbf{Comparação entre Sexos:} Para comparar a variável \texttt{Tempo\_Final\_min}, o pressuposto de normalidade foi verificado com o teste de Shapiro-Wilk. A violação do pressuposto (p < 0.05 para ambos os grupos) levou à escolha do teste não-paramétrico de Mann-Whitney U, apropriado para a comparação de duas amostras independentes sem distribuição normal.
-    \item \textbf{Comparação entre Faixas Etárias:} Seguindo a mesma lógica, a não-normalidade dos grupos, verificada pelo teste de Shapiro-Wilk, justificou o uso do teste de Kruskal-Wallis. Para investigar as diferenças específicas entre os pares de grupos, foi aplicado o teste \emph{post-hoc} de Dunn com correção de Bonferroni para o controle da taxa de erro do tipo I.
-    \item \textbf{Comparação entre Faixas de Peso:} Visando verificar se existe diferença entre as faixas de peso, com a não-normalidade dos grupos, verificada pelo teste de Shapiro-Wilk, justificou o uso do teste de Kruskal-Wallis.
+    \item \textbf{Comparação entre Sexos:} Para comparar a distribuição do tempo final entre homens e mulheres, utilizou-se o teste de Mann-Whitney U. As hipóteses testadas foram:
+    \begin{itemize}
+        \item $H_0$: A distribuição do tempo final é a mesma para ambos os sexos.
+        \item $H_a$: A distribuição do tempo final é diferente entre os sexos.
+    \end{itemize}
+    
+    \item \textbf{Comparação entre Faixas Etárias e de Peso:} Para comparar o tempo final entre três ou mais grupos independentes (faixas etárias e faixas de peso), empregou-se o teste de Kruskal-Wallis. As hipóteses foram:
+    \begin{itemize}
+        \item $H_0$: As distribuições do tempo final são as mesmas em todas as faixas (etárias ou de peso).
+        \item $H_a$: Pelo menos uma faixa possui uma distribuição de tempo final diferente das demais.
+    \end{itemize}
+    Em caso de rejeição da hipótese nula, foi aplicado o teste \textit{post-hoc} de Dunn com a correção de Bonferroni para identificar quais pares de grupos apresentavam diferenças estatisticamente significativas, controlando a taxa de erro do Tipo I que inflaciona com múltiplas comparações.
 \end{itemize}
 
 \subsection{Análise de Associação}
-Para investigar a relação entre performance, \texttt{Tempo\_Final\_min}, e consistência do ritmo, \texttt{Variabilidade\_Ritmo\_min\_std}, a não-normalidade de ambas as variáveis, indicada pelo teste de Shapiro-Wilk, determinou o uso da Correlação de Spearman ($\rho$). Este teste foi escolhido por sua adequação para avaliar avalia a força e a direção das relações monotônicas, independentemente da distribuição dos dados, em contraste com a correlação de Pearson, que pressupõe uma relação linear e normalidade.
+Para investigar a relação entre a performance (\texttt{Tempo\_Final\_seg}) e a consistência do ritmo (\texttt{Variabilidade\_Ritmo\_std}), utilizou-se o coeficiente de correlação de postos de Spearman ($\rho$). Este método foi escolhido em detrimento da correlação de Pearson devido à não-normalidade das variáveis. Conforme definem \citet{siegel1988}, o teste de Spearman avalia a força e a direção de uma relação monotônica (não necessariamente linear) entre duas variáveis. As hipóteses testadas foram:
+\begin{itemize}
+    \item $H_0: \rho = 0$ (Não há associação monotônica entre as variáveis).
+    \item $H_a: \rho \neq 0$ (Existe uma associação monotônica entre as variáveis).
+\end{itemize}
 
 \subsection{Análise de Agrupamento}
 
@@ -154,14 +171,33 @@ A determinação do número ideal de agrupamentos ($k$) é um parâmetro fundame
 
 
 \subsection{Modelagem Preditiva}
-Para atingir o objetivo principal do trabalho, foi ajustado um modelo de regressão linear múltipla para prever o tempo final dos atletas (variável dependente) a partir de um conjunto de variáveis preditoras (independentes). Para desenvolver um modelo capaz de prever a variável \texttt{Tempo\_Final\_seg}, foi empregada a técnica de Regressão Linear Múltipla, ajustada por Mínimos Quadrados Ordinários (OLS).
-\begin{itemize}
-    \item \textbf{Refinamento do Modelo:} Partindo de um modelo inicial com múltiplas variáveis, foi aplicado um processo de seleção de variáveis \emph{backward elimination} (eliminação retrógrada), removendo iterativamente os preditores não significativos (com p-valor > 0.05). Adicionalmente, a multicolinearidade entre as variáveis remanescentes foi verificada por meio do Fator de Inflação de Variância (VIF), assegurando a obtenção de um modelo final parcimonioso, robusto e de fácil interpretação.
-    \item \textbf{Avaliação do Modelo:} A avaliação do modelo final foi realizada por meio da significância estatística dos coeficientes, da análise do coeficiente de determinação ajustado ($R^2$ ajustado) e da análise gráfica dos resíduos. A análise dos resíduos incluiu a verificação de homocedasticidade, normalidade e independência, garantindo que os pressupostos da regressão linear fossem atendidos.
-\end{itemize}
+Para modelar a relação entre o tempo final e as diversas métricas de desempenho e demográficas, foi ajustado um modelo de Regressão Linear Múltipla, utilizando o método de Estimação por Mínimos Quadrados Ordinários (OLS).
+
+\subsubsection{Especificação do Modelo}
+O modelo teórico assume a seguinte forma:
+$$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon $$
+Onde $Y$ é a variável dependente (\texttt{Tempo\_Final\_seg}), $X_1, \dots, X_p$ são as variáveis preditoras, $\beta_0, \dots, \beta_p$ são os coeficientes a serem estimados, e $\epsilon$ é o termo de erro aleatório, que se assume seguir uma distribuição normal com média zero e variância constante ($\epsilon \sim N(0, \sigma^2)$).
+
+\subsubsection{Pressupostos do Modelo}
+A validade das inferências do modelo OLS depende de um conjunto de pressupostos sobre os erros \citep{montgomery2012}:
+\begin{enumerate}
+    \item \textbf{Linearidade:} A relação entre as variáveis preditoras e a variável resposta é linear.
+    \item \textbf{Independência dos Erros:} Os erros $\epsilon_i$ são independentes entre si.
+    \item \textbf{Homocedasticidade:} Os erros possuem variância constante ($\text{Var}(\epsilon_i) = \sigma^2$) para todos os níveis das variáveis preditoras.
+    \item \textbf{Normalidade dos Erros:} Os erros são normalmente distribuídos.
+\end{enumerate}
+A verificação destes pressupostos foi realizada a posteriori, por meio da análise gráfica dos resíduos do modelo ajustado.
+
+\subsubsection{Seleção de Variáveis e Avaliação do Modelo}
+Partindo de um modelo inicial com todas as variáveis preditoras potenciais, foi aplicado um processo de seleção de variáveis \textit{backward elimination}. A cada passo, a variável com o maior p-valor acima do nível de significância de 0.05 era removida, buscando-se um modelo final que fosse parcimonioso e interpretável.
+
+Para evitar problemas de multicolinearidade (alta correlação entre preditores), o Fator de Inflação de Variância (VIF) foi calculado para as variáveis do modelo final. Um VIF superior a 5 foi considerado como indicativo de multicolinearidade problemática, levando à remoção da variável em questão.
+
+A qualidade do ajuste do modelo final foi avaliada pelo coeficiente de determinação ajustado ($R^2_{\text{adj}}$), pela significância estatística global do modelo (teste F) e dos coeficientes individuais (teste t), e pela análise de resíduos para validação dos pressupostos.
+
 
 \section{Softwares Utilizados}
 
-Todas as etapas de coleta, tratamento e análise estatística dos dados foram conduzidas na linguagem de programação Python (versão 3.x), com o auxílio de bibliotecas consagradas para manipulação e análise de dados, como Pandas, NumPy, Matplotlib, Seaborn, e para modelagem estatística, como Scikit-learn e Statsmodels.
+Todas as etapas de coleta, tratamento e análise estatística dos dados foram conduzidas na linguagem de programação Python (versão >= 3.11), com o auxílio de bibliotecas consagradas para manipulação e análise de dados, como Pandas, NumPy, Matplotlib, Seaborn, e para modelagem estatística, como Scikit-learn e Statsmodels.
 
 % --- FIM DO CAPÍTULO DE METODOLOGIA ---
