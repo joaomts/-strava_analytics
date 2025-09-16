@@ -20,6 +20,7 @@
 \DeclareSymbolFontAlphabet{\mathbf}{operators}
 \DeclareSymbolFontAlphabet{\mathbf}{symbols}
 \usepackage[sc,bf,outermarks,pagestyles]{titlesec}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
 \usepackage{titletoc}
 \usepackage[dvipsnames,table,svgnames]{xcolor}
 \usepackage{tikz}
@@ -61,6 +62,27 @@
 \usepackage[intoc,portuguese]{nomencl}
 \usepackage{etoolbox}
 \usepackage{avant}
+\usepackage{epigraph}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage{threeparttable}
+
+
+% --- Configuração da formatação das referências ---
+\setlength{\bibhang}{0em}   % recuo do texto após o autor
+\setlength{\bibsep}{1em}
+\setlength{\footskip}{20pt} 
+% Comprimento da linha da epígrafe (60% da largura do texto)
+\setlength{\epigraphwidth}{0.6\textwidth} 
+
+% Remove a linha horizontal que o pacote às vezes adiciona
+\setlength{\epigraphrule}{0pt} 
+
+% Adicione este código no seu preâmbulo
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
 
 %====================================================================
 % Definição de cores
@@ -78,7 +100,7 @@
 %====================================================================
 % Definições de Layout
 %====================================================================
-\geometry{a4paper,text={17cm,25.7cm},centering}
+\geometry{a4paper, top=3cm, left=3cm, right=2cm, bottom=2cm, headheight=13.6pt, footskip=1cm}
 \newtheorem{definicao}{Definição}
 \newtheorem{teorema}{Teorema}
 \newtheorem{lema}{Lema}
@@ -92,14 +114,51 @@
 \newtheorem{propriedade}{Propriedade}
 
 %====================================================================
-% Cabeçalhos e rodapés
+% Cabeçalhos e rodapés (2 estilos: pré-textual e principal)
 %====================================================================
-\newpagestyle{cabecalhorodape}[\small\bfseries\scshape]
-{\headrule\sethead[\usepage][][\chaptertitle]
-{\chaptertitle}{}{\usepage}
-\footrule\setfoot[]
-[Universidade Federal de Uberlândia - Faculdade de Matemática][]
-{}{Bacharelado em Estatística}{}}
+
+% --- ESTILO 1: PARA PÁGINAS PRÉ-TEXTUAIS ---
+% (Número no canto superior direito)
+\fancypagestyle{pretextualstyle}{
+    \fancyhf{} % Limpa tudo
+    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
+    \renewcommand{\footrulewidth}{0pt} % Sem linha no rodapé
+    % Número da página, tamanho 10, no canto superior direito (R)
+    \fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
+}
+
+% --- ESTILO 2: PARA O TEXTO PRINCIPAL ---
+% (Rodapé UFU e número embaixo, no centro)
+\fancypagestyle{maintextstyle}{
+    \fancyhf{} % Limpa tudo
+    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
+    \renewcommand{\footrulewidth}{0.4pt} % Com linha no rodapé
+    % Rodapé esquerdo
+    \fancyfoot[L]{\fontsize{10}{12}\selectfont
+    Universidade Federal de Uberlândia}
+
+    % Rodapé direito
+    \fancyfoot[R]{\fontsize{10}{12}\selectfont
+    Instituto de Matemática e Estatística}
+    \fancyfoot[C]{\fontsize{10}{12}\selectfont\thepage}
+}
+
+\fancypagestyle{plain}{%
+    \fancyhf{} % Limpa tudo
+    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
+    \renewcommand{\footrulewidth}{0.4pt} % Com linha no rodapé
+    
+    % Rodapé esquerdo
+    \fancyfoot[L]{\fontsize{10}{12}\selectfont
+    Universidade Federal de Uberlândia}
+
+    % Rodapé direito
+    \fancyfoot[R]{\fontsize{10}{12}\selectfont
+    Instituto de Matemática e Estatística}
+    
+    % Número da página no centro
+    \fancyfoot[C]{\fontsize{10}{12}\selectfont\thepage}
+}
 
 %====================================================================
 % Formatação dos capítulos
@@ -134,50 +193,25 @@
 }
 
 %====================================================================
-% Redefinição para o comando \chapter e ambientes especiais
+% Ambientes para Resumo e Abstract (versão simplificada e correta)
 %====================================================================
-\makeatletter % INÍCIO DO BLOCO ESPECIAL
-\newcommand*{\saved@chapter}{}
-\let\saved@chapter\chapter
-\renewcommand*{\chapter}{%
-  \begingroup
-  \toks@{\endgroup\saved@chapter}%
-  \@ifstar{%
-    \toks@\expandafter{\the\toks@*}%
-    \final@chapter
-  }{\next@chapter}%
-}
-\newcommand*{\final@chapter}[1]{%
-  \the\toks@{#1}%
-  \thispagestyle{cabecalhorodape}%
-}
-\newcommand*{\next@chapter}{%
-  \@ifnextchar[{\opt@chapter}{\final@chapter}%
-}
-\newcommand*{\opt@chapter}{}
-\def\opt@chapter[#1]{%
-  \toks@\expandafter{\the\toks@[{#1}]}%
-  \final@chapter
-}
-
 \newenvironment{resumo-portugues}
 {
-\saved@chapter*{Resumo}
-\thispagestyle{empty}
+    \chapter*{Resumo}
+    \thispagestyle{empty}
 }
 {
-\cleardoublepage
+    \cleardoublepage
 }
 
 \newenvironment{resumo-ingles}
 {
-\saved@chapter*{Abstract}
-\thispagestyle{empty}
+    \chapter*{Abstract}
+    \thispagestyle{empty}
 }
 {
-\cleardoublepage
+    \cleardoublepage
 }
-\makeatother % FIM DO BLOCO ESPECIAL
 
 %====================================================================
 % Criação de grupos de nomenclaturas
@@ -215,7 +249,7 @@
 %====================================================================
 % Comando da Capa
 %====================================================================
-\newcommand{\capa}[6]{
+\newcommand{\capa}[4]{
 %--- PÁGINA 1: CAPA PRINCIPAL ---
 \begin{titlepage}
   \begin{minipage}[t][\textheight][t]{\textwidth}
@@ -275,7 +309,8 @@
           {
           \begin{onehalfspacing}
             Trabalho de Conclusão de Curso apresentado à Universidade Federal de Uberlândia, como parte das exigências para a obtenção do Titulo de bacharel em Estatística.
-            \vspace*{0.75cm}
+            
+            \vspace*{1cm}
             Orientador: {#4}
           \end{onehalfspacing}
           }

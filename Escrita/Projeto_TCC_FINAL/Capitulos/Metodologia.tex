@@ -106,6 +106,68 @@ Visando quantificar a especialização técnica dos atletas, foram desenvolvidos
     \item \textbf{\texttt{indice\_descida\_vs\_subida}:} Compara diretamente a performance nos dois terrenos-chave, servindo como uma métrica da capacidade de aceleração relativa do atleta em descidas versus subidas.
 \end{itemize}
 
+% Adicione este texto no final da Seção 4.5 (Engenharia de Variáveis)
+Ao término de todas as etapas de tratamento e engenharia, consolidou-se o conjunto de dados final a ser utilizado nas análises estatísticas subsequentes. A estrutura desta base de dados, em que cada observação corresponde a um atleta único, é detalhada na Tabela \ref{tab:dicionario_variaveis}, que descreve cada variável, seu tipo e sua respectiva unidade de medida.
+
+% Comando para aumentar o espaçamento vertical das linhas
+\renewcommand{\arraystretch}{1.5}
+
+\begin{longtable}{ L{0.23\textwidth} L{0.47\textwidth} C{0.15\textwidth} C{0.1\textwidth} }
+\caption{Dicionário de variáveis do conjunto de dados final.}
+\label{tab:dicionario_variaveis} \\
+\toprule
+\textbf{Variável} & \textbf{Descrição} & \textbf{Tipo} & \textbf{Unidade} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{c}%
+{{\bfseries \tablename\ \thetable{} -- continuação}} \\
+\toprule
+\textbf{Variável} & \textbf{Descrição} & \textbf{Tipo} & \textbf{Unidade} \\
+\midrule
+\endhead
+\bottomrule
+\multicolumn{4}{r}{{\textit{Continua na próxima página}}} \\
+\endfoot
+\bottomrule
+\endlastfoot
+
+% --- DADOS DEMOGRÁFICOS E DE IDENTIFICAÇÃO ---
+\multicolumn{4}{l}{\textit{Variáveis de Identificação e Demográficas}} \\
+\midrule
+\texttt{Nome Atleta} & Identificador único textual para cada atleta. & Categórica & Adim. \\
+\midrule
+
+% --- VARIÁVEIS RESPOSTA E DE DESEMPENHO GERAL ---
+\multicolumn{4}{l}{\textit{Variáveis Resposta e de Desempenho Geral}} \\
+\midrule
+\texttt{Tempo\_Final\_seg} & Tempo total para completar a prova. Variável resposta principal. & Quant. \newline Contínua & segundos \\
+\texttt{Ritmo\_Medio\_seg} & Ritmo (pace) médio do atleta durante toda a prova. & Quant. \newline Contínua & seg/km \\
+\texttt{Variabilidade\_\allowbreak Ritmo\_\allowbreak std} & Desvio padrão do ritmo do atleta nos 36km. Métrica de consistência. & Quant. \newline Contínua & segundos \\
+\midrule
+
+% --- VARIÁVEIS DE ESTRATÉGIA DE PROVA (PACING) ---
+\multicolumn{4}{l}{\textit{Variáveis de Estratégia de Prova (Pacing)}} \\
+\midrule
+\texttt{Ritmo\_Medio\_\allowbreak Primeira\_Metade} & Ritmo médio do atleta nos primeiros 18km da prova. & Quant. \newline Contínua & seg/km \\
+\texttt{Ritmo\_Medio\_\allowbreak Segunda\_Metade} & Ritmo médio do atleta nos últimos 18km da prova. & Quant. \newline Contínua & seg/km \\
+\texttt{diff\_relativa\_...} & Diferença percentual entre o ritmo da segunda e da primeira metade. & Quant. \newline Contínua & \% \\
+\texttt{Ritmo\_Medio\_\allowbreak Trecho\_...} & Ritmo médio do atleta em trechos específicos de 5km. & Quant. \newline Contínua & seg/km \\
+\midrule
+
+% --- VARIÁVEIS DE DESEMPENHO POR TERRENO ---
+\multicolumn{4}{l}{\textit{Variáveis de Desempenho por Terreno}} \\
+\midrule
+\texttt{Ritmo\_Medio\_\allowbreak SUBIDA} & Ritmo médio do atleta nos trechos classificados como subida. & Quant. \newline Contínua & seg/km \\
+\texttt{Ritmo\_Medio\_\allowbreak DESCIDA} & Ritmo médio do atleta nos trechos classificados como descida. & Quant. \newline Contínua & seg/km \\
+\texttt{indice\_subida} & Performance relativa em subidas, normalizada pelo ritmo médio geral. & Quant. \newline Contínua & Adim. \\
+\texttt{indice\_descida} & Performance relativa em descidas, normalizada pelo ritmo médio geral. & Quant. \newline Contínua & Adim. \\
+\texttt{indice\_descida\_\allowbreak vs\_subida} & Razão entre o desempenho em descidas e subidas. & Quant. \newline Contínua & Adim. \\
+\bottomrule
+\end{longtable}
+
+% É uma boa prática restaurar o valor original do arraystretch depois da tabela
+\renewcommand{\arraystretch}{1}
+
 \section{Análise Estatística}
 \label{sec:analise_estatistica}
 

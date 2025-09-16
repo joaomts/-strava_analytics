@@ -1,0 +1,30 @@
+% Garante que esta página não terá cabeçalho, rodapé ou número.
+\thispagestyle{empty}
+
+% Adiciona um espaço vertical flexível que empurra todo o conteúdo
+% para a parte de baixo da página.
+\vspace*{\fill}
+
+% Este ambiente alinha o bloco da epígrafe à margem DIREITA da página.
+\begin{flushright}
+    % Criamos uma "caixa" (minipage) com uma largura fixa.
+    % Você pode ajustar o valor de 7cm para deixar a citação
+    % mais larga ou mais estreita. Tente 6cm ou 8cm se desejar.
+    \begin{minipage}{7cm}
+        % Este comando força TODO o texto dentro da caixa
+        % a ser alinhado à direita. É o segredo para juntar
+        % o autor e a citação.
+        \raggedleft
+        
+        % O texto da citação, em itálico. A dupla barra \\ cria uma nova linha.
+        \textit{"Não é só correr."} \\
+        
+        % Adiciona um pequeno espaço vertical entre a citação e o autor.
+        \vspace{0.5\baselineskip}
+        
+        % O nome do autor.
+        --- P. Lamin
+        
+    \end{minipage}
+\end{flushright}
+\vspace*{5cm}
