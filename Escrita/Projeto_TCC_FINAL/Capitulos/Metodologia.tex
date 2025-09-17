@@ -67,7 +67,7 @@ Após a extração, foi realizado um rigoroso processo de limpeza e estruturaç�
     \begin{itemize}
         \item \textbf{Frequência Cardíaca:} Dada a alta proporção de valores ausentes (superior a 70\%), indicando que a maioria dos atletas não utilizou ou não compartilhou dados de um monitor cardíaco, a variável foi removida do conjunto de dados para evitar a introdução de viés por meio de imputações complexas e pouco confiáveis.
         \item \textbf{Faixa de Peso:} Com aproximadamente 12,44\% de ausência, optou-se por tratar a ausência como uma informação em si. Foi criada a categoria ``Não Informado'', permitindo que o modelo analise se a própria decisão de não informar o peso está associada ao desempenho.
-        \item \textbf{Sexo e Faixa Etária:} Com percentuais de ausência baixos (inferiores a 10\%), aplicou-se a técnica de exclusão \textit{listwise}. Esta abordagem foi considerada apropriada sob a suposição de que os dados eram ausentes completamente ao acaso (MCAR, \textit{Missing Completely at Random}), e que a remoção de um pequeno número de observações não introduziria um viés significativo na amostra final \citep[para uma discussão, ver][]{rubin1976}.
+        \item \textbf{Sexo e Faixa Etária:} Com percentuais de ausência baixos (inferiores a 10\%), aplicou-se a técnica de exclusão \textit{listwise}. Esta abordagem foi considerada apropriada sob a suposição de que os dados eram ausentes completamente ao acaso (MCAR, \textit{Missing Completely at Random}), e que a remoção de um pequeno número de observações não introduziria um viés significativo na amostra final \cite[para uma discussão, ver][]{rubin1976}.
     \end{itemize}
 \end{enumerate}
 Ao final deste processo, consolidou-se um conjunto de dados final, limpo e estruturado no formato \emph{long}, contendo 109 atletas e 36 observações (quilômetros) para cada um.
@@ -178,7 +178,7 @@ Inicialmente, foi realizada uma análise descritiva com o uso de medidas de tend
 
 \subsection{Testes de Hipóteses}
 
-A comparação do tempo final entre diferentes grupos demográficos foi realizada por meio de testes de hipóteses não-paramétricos. A escolha por essa abordagem foi motivada pela rejeição da hipótese de normalidade da variável resposta \texttt{Tempo\_Final\_seg} nos subgrupos, verificada pelo teste de Shapiro-Wilk para um nível de significância $\alpha = 0.05$. A estatística não-paramétrica é robusta a distribuições não-normais, baseando-se nos postos (\textit{ranks}) das observações em vez de seus valores absolutos \citep{siegel1988}.
+A comparação do tempo final entre diferentes grupos demográficos foi realizada por meio de testes de hipóteses não-paramétricos. A escolha por essa abordagem foi motivada pela rejeição da hipótese de normalidade da variável resposta \texttt{Tempo\_Final\_seg} nos subgrupos, verificada pelo teste de Shapiro-Wilk para um nível de significância $\alpha = 0.05$. A estatística não-paramétrica é robusta a distribuições não-normais, baseando-se nos postos (\textit{ranks}) das observações em vez de seus valores absolutos \cite{siegel1988}.
 
 \begin{itemize}
     \item \textbf{Comparação entre Sexos:} Para comparar a distribuição do tempo final entre homens e mulheres, utilizou-se o teste de Mann-Whitney U. As hipóteses testadas foram:
@@ -208,9 +208,9 @@ Com o objetivo de identificar perfis distintos de corredores ("personas") com ba
 
 \subsubsection{Pré-processamento das Variáveis para Clusterização}
 
-O algoritmo K-Means agrupa os dados minimizando a variância intra-cluster, um processo que se baseia fundamentalmente no cálculo de distâncias (tipicamente a distância Euclidiana) entre as observações e os centróides dos clusters. Quando as variáveis de entrada (features) possuem escalas e magnitudes muito diferentes — como, por exemplo, uma variável de tempo em segundos (na casa dos milhares) e um índice de performance (na casa de 0.1 a 0.3) — o cálculo da distância pode ser enviesado. A variável com a maior magnitude iria dominar o cálculo, minimizando ou até anulando a contribuição das outras variáveis para a definição dos grupos.\citep{muller2016}.
+O algoritmo K-Means agrupa os dados minimizando a variância intra-cluster, um processo que se baseia fundamentalmente no cálculo de distâncias (tipicamente a distância Euclidiana) entre as observações e os centróides dos clusters. Quando as variáveis de entrada (features) possuem escalas e magnitudes muito diferentes — como, por exemplo, uma variável de tempo em segundos (na casa dos milhares) e um índice de performance (na casa de 0.1 a 0.3) — o cálculo da distância pode ser enviesado. A variável com a maior magnitude iria dominar o cálculo, minimizando ou até anulando a contribuição das outras variáveis para a definição dos grupos.\cite{muller2016}.
 
-Para suavizar este efeito e garantir que todas as variáveis tivessem a mesma importância relativa no processo de agrupamento, foi realizado um pré-processamento de padronização dos dados por meio da técnica \textit{StandardScaler}. Este método transforma cada variável para que ela passe a ter uma média igual a zero e um desvio padrão igual a um. A escolha por essa técnica se justifica pois muitos algoritmos de aprendizado de máquina assumem que as características estão centradas em zero e possuem variância na mesma ordem, evitando que uma variável domine a função objetivo do algoritmo \citep{scikitlearn_preprocessing}. A fórmula para a padronização de cada observação (x) em uma variável é dada por:
+Para suavizar este efeito e garantir que todas as variáveis tivessem a mesma importância relativa no processo de agrupamento, foi realizado um pré-processamento de padronização dos dados por meio da técnica \textit{StandardScaler}. Este método transforma cada variável para que ela passe a ter uma média igual a zero e um desvio padrão igual a um. A escolha por essa técnica se justifica pois muitos algoritmos de aprendizado de máquina assumem que as características estão centradas em zero e possuem variância na mesma ordem, evitando que uma variável domine a função objetivo do algoritmo \cite{scikitlearn_preprocessing}. A fórmula para a padronização de cada observação (x) em uma variável é dada por:
 
 \begin{equation}
     z = \frac{x - \mu}{\sigma}
@@ -229,7 +229,7 @@ Este passo metodológico foi crucial para assegurar que a formação dos cluster
 
 \subsubsection{Seleção do Número de Clusters (k)}
 
-A determinação do número ideal de agrupamentos ($k$) é um parâmetro fundamental para o algoritmo K-Means. Para esta finalidade, foi empregado o Método do Cotovelo (\textit{Elbow Method})\citep{thorndike1953}. Este método consiste em executar o algoritmo de clusterização para um intervalo de valores de $k$ (e.g., de 1 a 10) e calcular a soma dos quadrados das distâncias intra-cluster (inércia) para cada valor. O número ótimo de clusters é visualmente identificado no ponto do gráfico onde a adição de um novo cluster não resulta em uma diminuição significativa da inércia, formando um "cotovelo" na curva.
+A determinação do número ideal de agrupamentos ($k$) é um parâmetro fundamental para o algoritmo K-Means. Para esta finalidade, foi empregado o Método do Cotovelo (\textit{Elbow Method})\cite{thorndike1953}. Este método consiste em executar o algoritmo de clusterização para um intervalo de valores de $k$ (e.g., de 1 a 10) e calcular a soma dos quadrados das distâncias intra-cluster (inércia) para cada valor. O número ótimo de clusters é visualmente identificado no ponto do gráfico onde a adição de um novo cluster não resulta em uma diminuição significativa da inércia, formando um "cotovelo" na curva.
 
 
 \subsection{Modelagem Preditiva}
@@ -241,7 +241,7 @@ $$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_p X_p + \epsilon $$
 Onde $Y$ é a variável dependente (\texttt{Tempo\_Final\_seg}), $X_1, \dots, X_p$ são as variáveis preditoras, $\beta_0, \dots, \beta_p$ são os coeficientes a serem estimados, e $\epsilon$ é o termo de erro aleatório, que se assume seguir uma distribuição normal com média zero e variância constante ($\epsilon \sim N(0, \sigma^2)$).
 
 \subsubsection{Pressupostos do Modelo}
-A validade das inferências do modelo OLS depende de um conjunto de pressupostos sobre os erros \citep{montgomery2012}:
+A validade das inferências do modelo OLS depende de um conjunto de pressupostos sobre os erros \cite{montgomery2012}:
 \begin{enumerate}
     \item \textbf{Linearidade:} A relação entre as variáveis preditoras e a variável resposta é linear.
     \item \textbf{Independência dos Erros:} Os erros $\epsilon_i$ são independentes entre si.

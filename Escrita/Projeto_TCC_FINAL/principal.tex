@@ -1,109 +1,122 @@
-    \documentclass[12pt,openright]{report}
-    \usepackage{estilo}
-    \makenomenclature
+\documentclass[12pt,openright]{report}
+\usepackage{estilo}
 
-    \begin{document}
-    \tolerance=5000
+% ====================================================================
+% DECLARE O ARQUIVO DE BIBLIOGRAFIA AQUI, NO PREÂMBULO!
+% Este é o local correto.
+% ====================================================================
+\addbibresource{Bibliografia/bibliografia.bib}
 
-    %====================================================================
-    %Capa
-    %====================================================================
-    \capa
-    {ANÁLISE DE DESEMPENHO DE CORREDORES UTILIZANDO DADOS DO STRAVA: UMA ABORDAGEM DE REGRESSÃO LINEAR.}
-    {João Marcos de Souza Matos}
-    {2025}
-    {Pedro Franklin Cardoso Silva}
-    %{Nome completo do segundo membro da banca de defesa}
-    %{Nome completo do terceiro membro da banca de defesa}
+\makenomenclature
 
-    %====================================================================
-    % INÍCIO DOS ELEMENTOS PRÉ-TEXTUAIS
-    %====================================================================
-    \setcounter{page}{1} % Define manualmente o contador da página para 1
+\begin{document}
+\tolerance=5000
 
-    %====================================================================
-    % Agradecimentos: Os agradecimentos deverão ser escritos dentro do 
-    % arquivo agradecimentos.tex. 
-    %====================================================================     
-    \input{pretextual/agradecimentos.tex}
-    \cleardoublepage
+%====================================================================
+%Capa
+%====================================================================
+\capa
+{ANÁLISE DE DESEMPENHO DE CORREDORES UTILIZANDO DADOS DO STRAVA: UMA ABORDAGEM DE REGRESSÃO LINEAR.}
+{João Marcos de Souza Matos}
+{2025}
+{Pedro Franklin Cardoso Silva}
+%{Nome completo do segundo membro da banca de defesa}
+%{Nome completo do terceiro membro da banca de defesa}
 
-    % --- Epígrafe (Opcional) ---
-    \input{pretextual/epigrafe.tex}
-    \cleardoublepage
-    %====================================================================
-    % Resumo em português: O resumo em português
-    %====================================================================
-    \input{pretextual/resumo.tex}
-    %====================================================================
-    % Resumo em inglês: O resumo em inglês deverá ser escrito dentro 
-    % do arquivo abstract.tex.
-    %====================================================================
-    \input{pretextual/abstract.tex}
-    %====================================================================
-    % Comando para inclusão da lista de figuras (descomente se usar)
-    %====================================================================
-    %\listoffigures
-    %\cleardoublepage
-    
-    %====================================================================
-    % Comando para inclusão da lista de tabelas (descomente se usar)
-    %====================================================================
-    %\listoftables
-    %\cleardoublepage
-    
-    %====================================================================
-    % Comando para inclusão do sumário - LUGAR CORRETO
-    %====================================================================
-    \tableofcontents
-    %====================================================================
-    % INÍCIO DOS ELEMENTOS TEXTUAIS (CAPÍTULOS)
-    %====================================================================
-    \onehalfspacing
-    % ATIVA o estilo de página ABNT com o rodapé da UFU
-    \pagestyle{maintextstyle} 
-    %====================================================================
-    %====================================================================
-    % Introdução.
-    %====================================================================
-    \input{Capitulos/introducao.tex}
-    %====================================================================
-    % Fundamentação Teórica. 
-    %====================================================================
-    \newpage
-    \input{Capitulos/Objetivos.tex}
+%====================================================================
+% INÍCIO DOS ELEMENTOS PRÉ-TEXTUAIS
+%====================================================================
+\pagestyle{empty}
 
-    %====================================================================
-    % Metodologia.
-    %====================================================================
-    \newpage
-    \input{Capitulos/Metodologia.tex}
+%====================================================================
+% Agradecimentos
+%====================================================================     
+\input{pretextual/agradecimentos.tex}
+\cleardoublepage
 
-    %====================================================================
-    % Resultados Preliminares
-    %====================================================================
-    \newpage
-    \input{Capitulos/Resultados.tex}
+% --- Epígrafe (Opcional) ---
+\input{pretextual/epigrafe.tex}
+\cleardoublepage
+%====================================================================
+% Resumo em português
+%====================================================================
+\input{pretextual/resumo.tex}
+%====================================================================
+% Resumo em inglês
+%====================================================================
+\input{pretextual/abstract.tex}
+%====================================================================
+% Comando para inclusão da lista de figuras (descomente se usar)
+%====================================================================
+%\listoffigures
+%\cleardoublepage
 
-    %====================================================================
-    % Referências bibliográficas
-    %====================================================================
-    \newpage
-    \def\thispagestyle#1{}
-    %\bibliographystyle{babplain-fl}
-    \bibliographystyle{plainnat}
-    \bibliography{Bibliografia/bibliografia}
+%====================================================================
+% Comando para inclusão da lista de tabelas (descomente se usar)
+%====================================================================
+%\listoftables
+%\cleardoublepage
 
-    
-    %====================================================================
-    % Apêndices da monografia
-    % Pode ser que o trabalho tenha vários apêndices. Coloque os 
-    % apêndices em uma pasta e dentro da pasta %crie o arquivo tex com o 
-    % texto associado ao apêndice. 
-    %====================================================================
-    %\begin{appendices}
-    %\input{apendices/apendice1/apendice1.tex}
-    %\input{apendices/apendice2/apendice2.tex}
-    %\end{appendices}
+%====================================================================
+% Comando para inclusão do sumário - LUGAR CORRETO
+%====================================================================
+\cleardoublepage
+% ATIVA o estilo de página ABNT com o rodapé da UFU
+\pagestyle{maintextstyle} 
+\setcounter{page}{6}
+\tableofcontents
 
-    \end{document}
+%====================================================================
+% INÍCIO DOS ELEMENTOS TEXTUAIS (CAPÍTULOS)
+%====================================================================
+\onehalfspacing
+\cleardoublepage
+
+
+
+%====================================================================
+% Introdução.
+%====================================================================
+\input{Capitulos/introducao.tex}
+%====================================================================
+% Fundamentação Teórica. 
+%====================================================================
+\newpage
+\input{Capitulos/Objetivos.tex}
+
+%====================================================================
+% Metodologia.
+%====================================================================
+\newpage
+\input{Capitulos/Metodologia.tex}
+
+%====================================================================
+% Resultados Preliminares
+%====================================================================
+\newpage
+\input{Capitulos/Resultados.tex}
+
+%====================================================================
+% Discussão
+%====================================================================
+\newpage
+\input{Capitulos/Discussao.tex}
+
+%====================================================================
+% Conclusão
+%====================================================================
+\newpage
+\input{Capitulos/Conclusao.tex}
+
+%====================================================================
+% Referências bibliográficas
+%====================================================================
+\newpage
+\printbibliography
+
+%====================================================================
+% Apêndices da monografia
+%====================================================================
+%\begin{appendices}
+
+\end{document}

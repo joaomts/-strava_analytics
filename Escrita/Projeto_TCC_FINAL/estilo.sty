@@ -4,6 +4,7 @@
 % Template para Elaboração de Trabalhos de Conclusão de Curso
 % do Bacharelado em Estatística
 % Autor: Prof. Dr. Alessandro Alves Santana
+% VERSÃO CORRIGIDA E SIMPLIFICADA PARA CITAÇÕES
 %====================================================================
 % Pacotes
 %====================================================================
@@ -13,6 +14,18 @@
 \addto\captionsbrazil{
     \renewcommand{\figurename}{Figura}
 }
+
+% --- PACOTE DE BIBLIOGRAFIA (A ESCOLHA CORRETA E SIMPLIFICADA) ---
+\usepackage{csquotes} % ADICIONADO: Conforme recomendação do biblatex
+\usepackage[
+    style=abnt,        % Estilo ABNT
+    backend=biber,     % Ferramenta de compilação (padrão do Latex Workshop)
+    language=brazil,   % Idioma
+    natbib=true        % Compatibilidade com comandos do natbib
+    % abnt-emphasize=bf  % REMOVIDO: Opção causou erro na sua versão.
+]{biblatex}
+\addbibresource{Bibliografia/bibliografia.bib}
+
 \usepackage{bbold}
 \usepackage{dsfont}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amstext,amscd}
@@ -30,7 +43,7 @@
 \usepackage{fancybox}
 \usepackage{lipsum}
 \usepackage{geometry}
-\usepackage[hyphens]{url}
+% \usepackage[hyphens]{url} % REMOVIDO: Pacote já é carregado pelo hyperref, causando conflito.
 \usepackage[titletoc]{appendix}
 \usepackage[nottoc]{tocbibind}
 \usepackage{array,booktabs,tabularx,tabulary}
@@ -50,15 +63,13 @@
 \usepackage{pst-3dplot}
 \usepackage{indentfirst}
 \usepackage[small,sc,bf,hang]{caption}
-\usepackage[colorlinks]{hyperref}
+\usepackage[colorlinks]{hyperref} % hyperref carrega o pacote 'url' internamente
 \usepackage{fix-cm}
 \usepackage{rotating}
 \usepackage{enumerate}
 \usepackage{paralist}
 \usepackage[section]{placeins}
 \usepackage{float}
-\usepackage[sort&compress,square,comma,numbers,authoryear]{natbib}
-\usepackage[fixlanguage]{babelbib}
 \usepackage[intoc,portuguese]{nomencl}
 \usepackage{etoolbox}
 \usepackage{avant}
@@ -70,8 +81,8 @@
 
 
 % --- Configuração da formatação das referências ---
-\setlength{\bibhang}{0em}   % recuo do texto após o autor
-\setlength{\bibsep}{1em}
+% \setlength{\bibhang}{0em}   % REMOVIDO: Comando do pacote natbib
+% \setlength{\bibsep}{1em}      % REMOVIDO: Comando do pacote natbib
 \setlength{\footskip}{20pt} 
 % Comprimento da linha da epígrafe (60% da largura do texto)
 \setlength{\epigraphwidth}{0.6\textwidth} 
@@ -116,47 +127,35 @@
 %====================================================================
 % Cabeçalhos e rodapés (2 estilos: pré-textual e principal)
 %====================================================================
-
+% --- O restante do arquivo continua igual ---
 % --- ESTILO 1: PARA PÁGINAS PRÉ-TEXTUAIS ---
-% (Número no canto superior direito)
 \fancypagestyle{pretextualstyle}{
-    \fancyhf{} % Limpa tudo
-    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
-    \renewcommand{\footrulewidth}{0pt} % Sem linha no rodapé
-    % Número da página, tamanho 10, no canto superior direito (R)
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
     \fancyhead[R]{\fontsize{10}{12}\selectfont\thepage}
 }
 
 % --- ESTILO 2: PARA O TEXTO PRINCIPAL ---
-% (Rodapé UFU e número embaixo, no centro)
 \fancypagestyle{maintextstyle}{
-    \fancyhf{} % Limpa tudo
-    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
-    \renewcommand{\footrulewidth}{0.4pt} % Com linha no rodapé
-    % Rodapé esquerdo
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
     \fancyfoot[L]{\fontsize{10}{12}\selectfont
     Universidade Federal de Uberlândia}
-
-    % Rodapé direito
     \fancyfoot[R]{\fontsize{10}{12}\selectfont
     Instituto de Matemática e Estatística}
     \fancyfoot[C]{\fontsize{10}{12}\selectfont\thepage}
 }
 
 \fancypagestyle{plain}{%
-    \fancyhf{} % Limpa tudo
-    \renewcommand{\headrulewidth}{0pt} % Sem linha no cabeçalho
-    \renewcommand{\footrulewidth}{0.4pt} % Com linha no rodapé
-    
-    % Rodapé esquerdo
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.4pt}
     \fancyfoot[L]{\fontsize{10}{12}\selectfont
     Universidade Federal de Uberlândia}
-
-    % Rodapé direito
     \fancyfoot[R]{\fontsize{10}{12}\selectfont
     Instituto de Matemática e Estatística}
-    
-    % Número da página no centro
     \fancyfoot[C]{\fontsize{10}{12}\selectfont\thepage}
 }
 
@@ -247,86 +246,93 @@
 }
 
 %====================================================================
-% Comando da Capa
+% Comando da Capa e Folha de Rosto (AJUSTADO PARA MARGENS ABNT E COM IMAGENS)
 %====================================================================
-\newcommand{\capa}[4]{
-%--- PÁGINA 1: CAPA PRINCIPAL ---
+\newcommand{\capa}[4]{%
+% --- CAPA ---
 \begin{titlepage}
-  \begin{minipage}[t][\textheight][t]{\textwidth}
+    \thispagestyle{empty} % Garante que não há cabeçalho/rodapé
+    
+    % --- BLOCO DAS IMAGENS (REINSERIDO) ---
+    % Esta caixa se expande à largura do texto, respeitando as margens.
     \hbox to \textwidth{%
       \includegraphics[height=2.5cm]{Imagens/brasao_republica.png}%
-      \hfill
+      \hfill % Espaço flexível entre as imagens
       \includegraphics[height=2.5cm]{Imagens/logo-ufu.pdf}%
     }
-    \vspace*{1.5cm}
-    \begin{center}
-      \Large\bfseries
-      Ministério da Educação \\
-      Universidade Federal de Uberlândia \\
-      IME - Instituto de Matemática e Estatística \\
-      Graduação em Estatística
+    
+    \vspace*{1.5cm} % Espaçamento após as imagens
+
+    % Bloco superior: Instituição (Centralizado)
+    \begin{center} 
+        {\Large\bfseries
+         Ministério da Educação \\
+         Universidade Federal de Uberlândia \\
+         IME - Instituto de Matemática e Estatística \\
+         Graduação em Estatística\par}
     \end{center}
-    \vspace*{\fill}
+
+    \vspace*{\fill} % Espaço flexível para centralizar o título verticalmente
+
+    % Bloco do Título
     \begin{center}
-      \Huge\bfseries #1
+        \begin{minipage}{0.9\textwidth} % Largura de 90% para títulos muito longos
+            \centering
+            \Huge\bfseries #1
+        \end{minipage}
     \end{center}
-    \vspace*{\fill}
+
+    \vspace*{\fill} % Espaço flexível para empurrar o resto para baixo
+
+    % Bloco do Autor
     \begin{center}
-      \Large\bfseries #2
+        {\Large\bfseries #2\par}
     \end{center}
-    \vfill
+    
+    \vfill % Espaço flexível menor
+
+    % Bloco inferior: Cidade e Ano
     \begin{center}
-      \Large\bfseries
-      Uberlândia-MG \\
-      #3
+        {\Large\bfseries
+         Uberlândia-MG \\
+         #3\par}
     \end{center}
-  \end{minipage}
 \end{titlepage}
-\thispagestyle{empty}
-%--- PÁGINA 2: FOLHA DE ROSTO ---
+
+% --- FOLHA DE ROSTO (Permanece sem imagens, conforme padrão) ---
 \begin{titlepage}
-  \begin{center}
-    \begin{minipage}[t][\textheight][t]{\textwidth}
-      \begin{center}
-        \begin{tabular}{c}
-          \Large{\bfseries{#2}}\\
-        \end{tabular}
-      \end{center}
-      \vspace*{5cm}%
-      \begin{center}
-        \begin{minipage}[c][4cm][c]{16cm}
-          {
-          \bfseries\LARGE
-          \begin{center}
-            {#1}
-          \end{center}
-          }
-        \end{minipage}
-      \end{center}
-      \vspace*{3cm}
-      \begin{flushright}
-        \begin{minipage}[c][5cm][c]{9cm}
-          {
-          \begin{onehalfspacing}
-            Trabalho de Conclusão de Curso apresentado à Universidade Federal de Uberlândia, como parte das exigências para a obtenção do Titulo de bacharel em Estatística.
-            
-            \vspace*{1cm}
-            Orientador: {#4}
-          \end{onehalfspacing}
-          }
-        \end{minipage}
-      \end{flushright}
-      \vfill
-      \begin{center}
-        \begin{large}
-          \begin{tabular}{c}
-            \Large{\bfseries Uberlândia-MG}\\[0.25cm]
-            \Large{\bfseries #3}\\
-          \end{tabular}
-        \end{large}
-      \end{center}
+    \thispagestyle{empty} % Garante que não há cabeçalho/rodapé
+    \centering % Centraliza o conteúdo principal
+
+    % Nome do Autor no topo
+    {\Large\bfseries #2\par}
+
+    \vspace*{4cm} % Espaçamento ABNT aproximado
+
+    % Bloco do Título
+    \begin{minipage}{0.8\textwidth}
+        \centering
+        \Huge\bfseries #1
     \end{minipage}
-  \end{center}
+
+    \vspace*{\fill} % Empurra o bloco de natureza do trabalho para a direita/baixo
+
+    % Bloco da Natureza do Trabalho (alinhado à direita)
+    \begin{flushright}
+        \begin{minipage}{0.6\textwidth} % A caixa ocupa 60% da largura do texto
+            \singlespacing % Conforme ABNT para este bloco
+            Trabalho de Conclusão de Curso apresentado à Universidade Federal de Uberlândia, como parte das exigências para a obtenção do título de bacharel em Estatística.
+            \vspace{1cm}
+
+            Orientador: #4
+        \end{minipage}
+    \end{flushright}
+
+    \vspace{2cm}
+
+    % Bloco inferior: Cidade e Ano
+    {\Large\bfseries
+     Uberlândia-MG \\
+     #3\par}
 \end{titlepage}
-\thispagestyle{empty}
 }
