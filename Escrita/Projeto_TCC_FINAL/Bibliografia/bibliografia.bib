@@ -1,85 +1,250 @@
 %====================================================================
 % Arquivo bib com a base de dados referentes a bibliografia
-%===================================================================
+%====================================================================
+% Para inserir uma referência referente a um LIVRO os dados 
+% OBRIGATÓRIOS são dados no exemplo abaixo. Para inserir a sua 
+% referência para esse caso basta apagar os dados do exemplo e 
+% escrever os seus dados do livro de seu estudo.
+%====================================================================
 
-@misc{borgesdl,
-  author = {BORGES, D. L.},
-  title  = {Dinâmica de tempo e pacing no campeonato brasileiro feminino de skyrunning},
+@book{burden,
+ author = {Richard L. Burden and J. Douglas Faires},
+ title = {Análise Numérica},
+ year = {2008},
+ edition = {8},
+ publisher = {Cengage},
+}
+
+%====================================================================
+% Para inserir uma referência referente a um LIVRO COM VÁRIOS  
+% VOLUMES os dados OBRIGATÓRIOS são dados no exemplo abaixo. 
+% Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os seus dados do livro de seu estudo.
+%====================================================================
+
+@book{leithold,
+ author = {L. Leithold},
+ title = {Cálculo com Geometria Analítica},
+ year = {1994},
+ volume = {2},
+ edition = {3},
+ publisher = {Harbra},
+}
+
+%====================================================================
+% Para inserir uma referência referente a um ARTIGO PUBLICADO EM 
+% REVISTA os dados OBRIGATÓRIOS são dados no exemplo abaixo. 
+% Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os seus dados do artigo de seu estudo.
+%====================================================================
+
+@article{gooch,
+author = {G.K. Yan and C. Ollivier-Gooch and Alberto Gomes Silva},
+title = {Towards Higher Order Discretization Error Estimation by 
+Error Transport Using Unstructured Finite-Volume Methods for Unsteady 
+Problems},
+journal = {Computers \& Fluids},
+year = {2017},
+volume = {154},
+number = {12},
+pages = {245-255},
+note = {\url{http://dx.doi.org/10.1016/j.compfluid.2017.06.012}},
+}
+
+%====================================================================
+% Para inserir uma referência referente a um ARTIGO PUBLICADO EM 
+% EM ANAIS DE EVENTOS os dados OBRIGATÓRIOS são dados no exemplo
+% abaixo.Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os seus dados do artigo de seu estudo.
+%====================================================================
+
+@InProceedings{daniel,
+  author = {Daniel W. Zaide and Carl F. Ollivier-Gooch},
+  title = {Inserting a Curve into an Existing Two Dimensional
+           Unstructured Mesh},
+  year = {2014},
+  booktitle = {Proceedings of the 22nd International Meshing
+               Roundtable},
+  eventtitle = {22nd International Meshing Roundtable},
+  publisher = {Springer International Publishing},
+  location =  {Orlando - Flórida},
+  pages = {93-107},
+  doi = {10.1007/978-3-319-02335-9_6},
+  url = {https://doi.org/10.1007/978-3-319-02335-9_6},
+}
+
+%====================================================================
+% Para inserir uma referência referente a uma DISSERTAÇÃO OU TESE
+% DE DOUTORADO os dados OBRIGATÓRIOS são dados no exemplo abaixo.
+% Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os seus dados do artigo de seu estudo.
+% OBSERVAÇÃO: No campo type, se o trabalho for uma dissertação
+% de mestrado esreva type={Dissertação de Mestrado}.
+%====================================================================
+
+@PhdThesis{santana,
+  author = {Alessandro Alves Santana},
+  title = {Identificação de Parâmetros em Problemas de
+           Advecção-Difusão Combinando a Técnica do Operador
+	   Adjunto e Métodos de Volumes Finitos de Alta Ordem},
+  type = {Tese de Doutorado},
+  institution = {Universidade de São Paulo},
+  year = {2007},
+}
+
+%====================================================================
+% Para inserir uma referência referente a uma REFERÊNCIA DA INTERNET
+% os dados OBRIGATÓRIOS são dados no exemplo abaixo.
+% Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os dados.
+% OBSERVAÇÃO: No campo note o que deve ser colocado é data em que
+% acessou o site para fazer a consulta ou estudo.
+%====================================================================
+
+@Online{wiki:quadrature,
+  author = {Wikipedia},
+  title =  {Gaussian Quadrature},
+  year =   {2017},
+  url =    {https://en.wikipedia.org/wiki/Gaussian_quadrature},
+  note = {acessado em 10/08/2017},
+}
+
+%====================================================================
+% Para inserir uma referência referente a um MATERIAL BIBLIOGRPAFICO
+% NÃO PUBLICADO os dados OBRIGATÓRIOS são dados no exemplo abaixo.
+% Para inserir a sua referência para esse caso basta apagar os 
+% dados do exemplo e escrever os dados.
+%====================================================================
+
+@Unpublished{almeida,
+  author = {Jeremias Nobre Ferreira},
+  title = {Notas de Cálculo Numérico},
+  year = {2015},
+  note = {notas de aula utilizados na disciplina Cálculo Numérico},
+}
+
+
+
+% ===================================================================
+% Arquivo bibliografia.bib corrigido e consolidado
+% Verificado em: 14/10/2025
+% ===================================================================
+
+@article{Akaike1974,
+  author  = {Akaike, Hirotugu},
+  title   = {{A new look at the statistical model identification}},
+  journal = {IEEE Transactions on Automatic Control},
+  year    = {1974},
+  volume  = {19},
+  number  = {6},
+  pages   = {716--723},
+  doi     = {10.1109/TAC.1974.1100705}
+}
+
+@misc{Borges2023,
+  author = {Borges, D. L.},
+  title  = {{Dinâmica de tempo e pacing no campeonato brasileiro feminino de skyrunning}},
   school = {Faculdade de Educação Física e Fisioterapia, Universidade Federal de Uberlândia},
   year   = {2023},
   type   = {Trabalho de Conclusão de Curso}
 }
 
 @article{EsteveLanao2014,
-  author    = {Esteve-Lanao, J. and Larumbe-Zabala, E. and Dabab, A. and Alcocer-Gamboa, A. and Ahumada, F.},
-  title     = {Running world cross-country championships: a unique model for pacing},
-  journal   = {International Journal of Sports Physiology and Performance},
-  year      = {2014},
-  volume    = {9},
-  number    = {6},
-  pages     = {1000--1005},
-  month     = {nov},
-  doi       = {10.1123/ijspp.2013-0457},
-  pmid      = {24664894},
+  author  = {Esteve-Lanao, Jonathan and Larumbe-Zabala, Eneko and Dabab, Abderrahim and Alcocer-Gamboa, Alberto and Ahumada, Felipe},
+  title   = {{Running world cross-country championships: a unique model for pacing}},
+  journal = {International Journal of Sports Physiology and Performance},
+  year    = {2014},
+  volume  = {9},
+  number  = {6},
+  pages   = {1000--1005},
+  month   = nov,
+  doi     = {10.1123/ijspp.2013-0457},
+  pmid    = {24664894}
 }
 
-@article{francagl,
-  author  = {G. L. DE FRANÇA and D. L. DE FRANÇA and A. F. CAREGNATO},
-  title   = {Motivos da Adesão em Atividades de Aventura na Natureza e as Influências na Qualidade de Vida de seus Praticantes.},
-  journal = {LICERE - Revista Do Programa De Pós-graduação Interdisciplinar Em Estudos Do Lazer},
+@article{Franca2021,
+  author  = {de Fran{\c{c}}a, G. L. and de Fran{\c{c}}a, D. L. and Caregnato, A. F.},
+  title   = {{Motivos da Adesão em Atividades de Aventura na Natureza e as Influências na Qualidade de Vida de seus Praticantes}},
+  journal = {LICERE - Revista do Programa de Pós-graduação Interdisciplinar em Estudos do Lazer},
   year    = {2021},
   volume  = {24},
   number  = {3},
-  pages   = {182–203},
-  note    = {https://doi.org/10.35699/2447-6218.2021.36311}
+  pages   = {182--203},
+  doi     = {10.35699/2447-6218.2021.36311}
 }
 
 @article{Hoffman2014,
-  author    = {Hoffman, Martin D.},
-  title     = {Pacing by winners of a 161-km mountain ultramarathon},
-  journal   = {International Journal of Sports Physiology and Performance},
-  year      = {2014},
-  volume    = {9},
-  number    = {6},
-  pages     = {1054--1056},
-  month     = {nov},
-  doi       = {10.1123/ijspp.2013-0556},
-  pmid      = {24664982},
+  author  = {Hoffman, Martin D.},
+  title   = {{Pacing by winners of a 161-km mountain ultramarathon}},
+  journal = {International Journal of Sports Physiology and Performance},
+  year    = {2014},
+  volume  = {9},
+  number  = {6},
+  pages   = {1054--1056},
+  month   = nov,
+  doi     = {10.1123/ijspp.2013-0556},
+  pmid    = {24664982}
 }
 
-@book{hoffmann,
-  author    = {RODOLFO, HOFFMANN},
-  title     = {Análise de regressão: uma introdução à econometria.},
+@book{Hoffmann2016,
+  author    = {Hoffmann, Rodolfo},
+  title     = {{Análise de regressão: uma introdução à econometria}},
   year      = {2016},
   edition   = {4},
-  publisher = {Universidade de São Paulo. Escola Superior de Agricultura Luiz de Queiroz},
-  doi       = {https://doi.org/10.11606/9788592105709}
+  publisher = {Universidade de São Paulo, Escola Superior de Agricultura Luiz de Queiroz},
+  doi       = {10.11606/9788592105709}
 }
 
-@article{macqueen1967,
-  title        = {Some methods for classification and analysis of multivariate observations},
-  author       = {MacQueen, James},
-  journal      = {Proceedings of the fifth Berkeley symposium on mathematical statistics and probability},
-  volume       = {1},
-  number       = {14},
-  pages        = {281--297},
-  year         = {1967},
+@article{Kruskal1952,
+  author  = {Kruskal, William H. and Wallis, W. Allen},
+  title   = {{Use of ranks in one-criterion variance analysis}},
+  journal = {Journal of the American Statistical Association},
+  year    = {1952},
+  volume  = {47},
+  number  = {260},
+  pages   = {583--621},
+  doi     = {10.1080/01621459.1952.10483441}
+}
+
+@book{Kutner2005,
+  author    = {Kutner, Michael H. and Nachtsheim, Christopher J. and Neter, John and Li, William},
+  title     = {{Applied linear statistical models}},
+  year      = {2005},
+  publisher = {McGraw-Hill Irwin},
+  address   = {Boston},
+  edition   = {5}
+}
+
+@incollection{Levene1960,
+  author    = {Levene, Howard},
+  title     = {{Robust tests for equality of variances}},
+  booktitle = {Contributions to Probability and Statistics: Essays in Honor of Harold Hotelling},
+  year      = {1960},
+  publisher = {Stanford University Press},
+  pages     = {278--292},
+  editor    = {Olkin, Ingram and others}
+}
+
+@inproceedings{Macqueen1967,
+  author    = {MacQueen, James B.},
+  title     = {{Some methods for classification and analysis of multivariate observations}},
+  booktitle = {Proceedings of the fifth Berkeley symposium on mathematical statistics and probability},
+  volume    = {1},
+  pages     = {281--297},
+  year      = {1967},
   organization = {University of California Press}
 }
 
-% Citação para o livro que justifica a necessidade de escalar dados em ML
-@book{mitchell2019web,
-  title     = {Web Scraping com Python: Coletando mais dados da web moderna},
-  author    = {Mitchell, R.},
+@book{Mitchell2019,
+  title     = {{Web Scraping com Python: Coletando mais dados da web moderna}},
+  author    = {Mitchell, Ryan},
   isbn      = {9788575227343},
-  url       = {https://books.google.com.br/books?id=95qODwAAQBAJ},
   year      = {2019},
   publisher = {Novatec Editora}
 }
 
-% Citação para a documentação do Scikit-learn (justifica a padronização)
-@book{montgomery2012,
-  title     = {Introdu{\c{c}}{\~a}o {\`a} An{\'a}lise de Regress{\~a}o Linear},
+@book{Montgomery2012,
+  title     = {{Introdu{\c{c}}{\~a}o {\`a} An{\'a}lise de Regress{\~a}o Linear}},
   author    = {Montgomery, Douglas C. and Peck, Elizabeth A. and Vining, G. Geoffrey},
   year      = {2012},
   publisher = {LTC},
@@ -87,109 +252,169 @@
   edition   = {5}
 }
 
-% Citação de referência para o Método do Cotovelo (Elbow Method)
-@book{muller2016,
-  author    = {Müller, Andreas C. and Guido, Sarah},
-  title     = {Introduction to Machine Learning with Python: A Guide for Data Scientists},
+@book{Montgomery2021,
+  author    = {Montgomery, Douglas C. and Peck, Elizabeth A. and Vining, G. Geoffrey},
+  title     = {{Introduction to linear regression analysis}},
+  year      = {2021},
+  publisher = {John Wiley \& Sons},
+  edition   = {6}
+}
+
+@book{Muller2016,
+  author    = {M{\"u}ller, Andreas C. and Guido, Sarah},
+  title     = {{Introduction to Machine Learning with Python: A Guide for Data Scientists}},
   publisher = {O'Reilly Media},
   year      = {2016},
   isbn      = {978-1449369415}
 }
 
 @article{OliveiraRosado2020,
-  author    = {Oliveira-Rosado, Joana and Duarte, Jo{\~a}o P. and Sousa-e-Silva, Paulo and Costa, Daniela C. and Martinho, Diogo V. and Sarmento, Hugo and Valente-dos-Santos, Jo{\~a}o and Rama, Lu{\'\i}s M. and Tavares, {\'O}scar M. and Conde, Jorge and Castanheira, Joaquim and Soles-Gon{\c c}alves, Rui and Agostinete, Ricardo R. and Coelho-e-Silva, Manuel J.},
-  title     = {Physiological profile of adult male long-distance trail runners: variations according to competitive level (national or regional)},
-  journal   = {Einstein (S{\~a}o Paulo)},
-  year      = {2020},
-  volume    = {18},
-  eid       = {eAO5256},
-  month     = {mar},
-  doi       = {10.31744/einstein_journal/2020AO5256},
+  author   = {Oliveira-Rosado, Joana and Duarte, Jo{\~a}o P. and Sousa-e-Silva, Paulo and Costa, Daniela C. and Martinho, Diogo V. and Sarmento, Hugo and Valente-dos-Santos, Jo{\~a}o and Rama, Lu{\'\i}s M. and Tavares, {\'O}scar M. and Conde, Jorge and Castanheira, Joaquim and Soles-Gon{\c c}alves, Rui and Agostinete, Ricardo R. and Coelho-e-Silva, Manuel J.},
+  title    = {{Physiological profile of adult male long-distance trail runners: variations according to competitive level (national or regional)}},
+  journal  = {Einstein (S{\~a}o Paulo)},
+  year     = {2020},
+  volume   = {18},
+  eid      = {eAO5256},
+  month    = mar,
+  doi      = {10.31744/einstein_journal/2020AO5256}
 }
 
-@article{rubin1976,
-  title     = {Inference and missing data},
-  author    = {Rubin, Donald B},
+@article{Rousseeuw1987,
+  author  = {Rousseeuw, Peter J.},
+  title   = {{Silhouettes: a graphical aid to the interpretation and validation of cluster analysis}},
+  journal = {Journal of Computational and Applied Mathematics},
+  year    = {1987},
+  volume  = {20},
+  pages   = {53--65},
+  doi     = {10.1016/0377-0427(87)90125-7}
+}
+
+@article{Rubin1976,
+  title     = {{Inference and missing data}},
+  author    = {Rubin, Donald B.},
   journal   = {Biometrika},
   volume    = {63},
   number    = {3},
   pages     = {581--592},
   year      = {1976},
-  publisher = {Oxford University Press}
+  publisher = {Oxford University Press},
+  doi       = {10.1093/biomet/63.3.581}
 }
 
-@misc{scikitlearn_preprocessing,
+@misc{ScikitLearn2024,
   author       = {{Scikit-learn Developers}},
-  title        = {6.3. Preprocessing data -- StandardScaler},
+  title        = {{6.3. Preprocessing data -- StandardScaler}},
   howpublished = {\url{https://scikit-learn.org/stable/modules/preprocessing.html}},
   year         = {2024},
   note         = {Acessado em: 16-09-2025}
 }
 
-@book{siegel1988,
-  title     = {Estat{\'\i}stica N{\~a}o-Param{\'e}trica para as Ci{\^e}ncias do Comportamento},
-  author    = {Siegel, Sidney and Castellan Jr, N John},
+@article{Schwarz1978,
+  author  = {Schwarz, Gideon},
+  title   = {{Estimating the dimension of a model}},
+  journal = {The Annals of Statistics},
+  year    = {1978},
+  volume  = {6},
+  number  = {2},
+  pages   = {461--464},
+  doi     = {10.1214/aos/1176344136}
+}
+
+@article{Shapiro1965,
+  author  = {Shapiro, Samuel S. and Wilk, Martin B.},
+  title   = {{An analysis of variance test for normality (complete samples)}},
+  journal = {Biometrika},
+  year    = {1965},
+  volume  = {52},
+  number  = {3/4},
+  pages   = {591--611},
+  doi     = {10.1093/biomet/52.3-4.591}
+}
+
+@book{Siegel2006,
+  title     = {{Estat{\'\i}stica N{\~a}o-Param{\'e}trica para as Ci{\^e}ncias do Comportamento}},
+  author    = {Siegel, Sidney and Castellan Jr., N. John},
   year      = {2006},
   publisher = {Artmed Editora},
   address   = {Porto Alegre},
   edition   = {2}
 }
 
-
 @article{Silva2022,
-  author    = {Silva, Gustavo da Motta and Costa, Anselmo de Athayde and de Andrade, Valter C. L. and Pereira, Alex da S. and Macedo, Rodrigo E. M. and de Andrade, Hugo L.},
-  title     = {Social aspects and sports performance: the principle of social-corporeal individuality},
-  journal   = {Revista Brasileira de Ci{\^e}ncias do Esporte},
-  year      = {2022},
-  volume    = {44},
-  eid       = {e005622},
-  doi       = {10.1590/rbce.44.e005622},
+  author  = {Silva, Gustavo da Motta and Costa, Anselmo de Athayde and de Andrade, Valter C. L. and Pereira, Alex da S. and Macedo, Rodrigo E. M. and de Andrade, Hugo L.},
+  title   = {{Social aspects and sports performance: the principle of social-corporeal individuality}},
+  journal = {Revista Brasileira de Ci{\^e}ncias do Esporte},
+  year    = {2022},
+  volume  = {44},
+  eid     = {e005622},
+  doi     = {10.1590/rbce.44.e005622}
 }
 
-@misc{strava_info,
-  author = {STRAVA},
-  title  = {About},
+@misc{Strava2024about,
+  author = {{Strava}},
+  title  = {{About}},
   year   = {2024},
   url    = {https://www.strava.com/about},
-  note   = {acessado em 14/03/2024}
+  note   = {Acessado em: 14-03-2024}
 }
 
-@misc{strava_pesquisa,
-  author = {STRAVA},
-  title  = {Strava Year In Sport Trend Report: Insights on the World of Exercise},
+@misc{Strava2024report,
+  author = {{Strava}},
+  title  = {{Strava Year In Sport Trend Report: Insights on the World of Exercise}},
   year   = {2024},
   url    = {https://stories.strava.com/articles/strava-year-in-sport-trend-report-insights-on-the-world-of-exercise},
-  note   = {acessado em 14/03/2024}
+  note   = {Acessado em: 14-03-2024}
 }
 
-@article{thorndike1953,
+@article{Thorndike1953,
   author  = {Thorndike, Robert L.},
-  title   = {Who belongs in the family?},
+  title   = {{Who belongs in the family?}},
   journal = {Psychometrika},
   volume  = {18},
   number  = {4},
   pages   = {267--276},
-  year    = {1953}
+  year    = {1953},
+  doi     = {10.1007/BF02289263}
 }
 
 @article{Vernillo2017,
-  author    = {Vernillo, G. and Giandolini, M. and Edwards, W.B. and Morin, J.B. and Samozino, P. and Horvais, N. and Millet, G.Y.},
-  title     = {Biomechanics and Physiology of Uphill and Downhill Running},
-  journal   = {Sports Medicine},
-  year      = {2017},
-  volume    = {47},
-  number    = {4},
-  pages     = {615--629},
-  month     = {apr},
-  doi       = {10.1007/s40279-016-0605-y},
-  pmid      = {27501719},
+  author  = {Vernillo, Gianluca and Giandolini, Marlene and Edwards, W. Brent and Morin, Jean-Benoit and Samozino, Pierre and Horvais, Nicolas and Millet, Gr{\'e}goire Y.},
+  title   = {{Biomechanics and Physiology of Uphill and Downhill Running}},
+  journal = {Sports Medicine},
+  year    = {2017},
+  volume  = {47},
+  number  = {4},
+  pages   = {615--629},
+  month   = apr,
+  doi     = {10.1007/s40279-016-0605-y},
+  pmid    = {27501719}
 }
 
-@book{witten2011,
-  title     = {Data Mining: T{\'e}cnicas e Aplica{\c{c}}{\~o}es de Aprendizado de M{\'a}quina},
+@book{Witten2011,
+  title     = {{Data Mining: T{\'e}cnicas e Aplica{\c{c}}{\~o}es de Aprendizado de M{\'a}quina}},
   author    = {Witten, Ian H. and Frank, Eibe and Hall, Mark A.},
   year      = {2011},
   publisher = {LTC},
   address   = {Rio de Janeiro},
   edition   = {3}
+}
+
+@book{Gujarati2011,
+  author    = {Gujarati, Damodar N. and Porter, Dawn C.},
+  title     = {Econometria B{\'a}sica},
+  publisher = {AMGH Editora},
+  year      = {2011},
+  address   = {Porto Alegre},
+  edition   = {5},
+  note      = {Tradu{\c c}{\~a}o da 5{\textordfeminine} edi{\c c}{\~a}o norte-americana}
+}
+
+@article{breusch1979,
+  title     = {A Simple Test for Heteroscedasticity and Random Coefficient Variation},
+  author    = {Breusch, T. S. and Pagan, A. R.},
+  year      = {1979},
+  journal   = {Econometrica},
+  volume    = {47},
+  number    = {5},
+  pages     = {1287--1294}
 }
