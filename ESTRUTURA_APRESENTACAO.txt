@@ -1,0 +1,416 @@
+Slide 1: Conteúdo da Capa
+(Opcional: Logo da UFU no topo)
+
+Universidade Federal de Uberlândia Instituto de Matemática e Estatística Bacharelado em Estatística
+obs: (use caixa alta, ou destaque a primeira linha com uma cor diferente — exemplo: “Perfis de Corredores de Montanha” em negrito e a segunda parte com fonte menor)
+
+Perfis de Corredores de Montanha e Fatores de Desempenho: Uma Análise Multivariada com Dados do Strava
+Autor: João Marcos de Souza Matos
+
+Orientador: Prof. Pedro Franklin Cardoso Silva
+
+Uberlândia-MG, Novembro de 2025
+""""""""""""""""
+Dicas estéticas específicas para o Gamma
+
+Escolha um fundo limpo, preferencialmente branco ou cinza-claro, com um detalhe sutil de cor (ex: um tom de azul ou verde — cores associadas a esportes e dados).
+
+Evite imagens de fundo pesadas. Se quiser, use uma silhueta ou gráfico sutil de montanhas no canto inferior, para reforçar o tema.
+
+Centralize tudo — esse é o slide de impacto inicial.
+""""""""""""""""
+
+Slide 2: Conteúdo do Roteiro (Agenda)
+Roteiro
+Introdução (O Problema e os Objetivos)
+
+Metodologia (Os Dados do Strava e os Modelos Estatísticos)
+
+Resultados e Discussão (Os Perfis de Corredores e os Fatores de Desempenho)
+
+Conclusão (Principais Achados e Próximos Passos)
+
+Slide 3: Conteúdo da Introdução e Contextualização
+
+Introdução: O Problema
+- O Fenômeno: 
+    -- Crescente interesse pela prática esportiva e hábitos saudáveis.
+    -- A popularização da Corrida de montanha, ou Trail Running (TR), atraindo corredores em busca de natureza e novos desafios.
+
+- A Complexidade: O desempenho não depende só do atleta, mas de uma interação complexa entre:
+
+    -- Fatores fisiológicos e estratégicos: Capcidade do atleta gerenciar sua energia e ritmo.
+    -- Ambientais: tipo de terrenho, inclinação, temperatura.
+
+- A Fonte de Dados: Plataformas como o Strava se tornaram um repositório massivo de dados granulares, 
+                    registrando ritmo, altimetria, distância e tempo de milhões de atividades.
+
+- A Lacuna Analítica:
+
+    -- A maioria dos estudos existentes utiliza apenas análises descritivas ou comparações simples. (ex: comparando amadores vs. profissionais).
+    -- Falta de aplicação de modelos multivariados para quantificar o impacto conjunto de múltiplos fatores. 
+
+- Proposta do Estudo: Utilizar dados do Strava e métodos estatísticos (agrupamento e regressão) para
+identificar perfis de corredores e analisar os fatores determinantes do desempenho.
+
+""""""""""""""""""""
+O objetivo deste slide é prender a atenção da banca e provar que seu tema é relevante e que existe um problema (uma "lacuna") que a estatística pode resolver.
+Imagens Valem Ouro: Este é o slide para o Gamma AI brilhar. Peça para ele adicionar:
+
+Uma imagem de impacto de uma corrida de montanha.
+
+Um pequeno logo do Strava.
+
+Talvez um gráfico de exemplo de altimetria de uma prova.
+
+Dicas visuais no Gamma:
+
+Fundo branco ou cinza claro.
+
+Uma faixa colorida (verde, azul ou laranja) no topo com o título.
+
+Ícones: 🏃 (corrida), 📊 (análise), 🎯 (objetivo).
+
+Pode colocar uma imagem sutil de uma trilha de montanha ao fundo, com transparência (30–40%).
+""""""""""""""""""""
+Slide 4: Conteúdo dos Objetivos
+
+Objetivos da Pesquisa
+Objetivo Geral
+Analisar o desempenho de corredores de montanha, identificando e quantificando os principais fatores que influenciam o tempo final de prova, a partir de dados da plataforma Strava.
+
+Objetivos Específicos
+- Construir uma base de dados original através de web scraping de dados públicos do Strava.
+- Identificar perfis de atletas por meio de técnicas de agrupamento (K-means).
+- Aplicar modelos de regressão linear múltipla para mensurar o impacto das variáveis de desempenho.
+- Analisar se o impacto da estratégia de ritmo (pacing) no desempenho varia conforme o perfil do atleta (usando termos de interação).
+
+""""""""""""""""""""
+Ícones sugeridos:
+
+🎯 (geral)
+
+🧩 (agrupamento)
+
+📈 (regressão)
+
+👟 (performance)
+
+💡 (recomendações)
+
+""""""""""""""""""""
+Slide 5: Conteúdo da Fundamentação Teórica
+Fundamentação Teórica: As Ferramentas da Análise
+Nossas escolhas metodológicas foram guiadas pela literatura e pela natureza do problema.
+
+1️⃣ Fatores de Performance em Corrida de Montanha
+
+- Corridas de montanha envolvem variação altimétrica e esforço físico diferenciado.
+- Desempenho é multifatorial: depende de aspectos fisiológicos (VO₂ max, limiar de lactato, economia de corrida) e biomecânicos (subidas e descidas).
+- A estratégia de ritmo (pacing) é essencial para o sucesso — manter um ritmo consistente e bem distribuído evita fadiga precoce.
+- Estudos indicam que a variação do ritmo ao longo da prova diferencia atletas de elite e amadores.
+📘 (Referências: [3], [8], [16], [27])
+
+2️⃣ Técnicas Estatísticas Aplicadas
+
+A análise foi conduzida em três etapas principais:
+- Análise Exploratória dos Dados (Estatística Descritiva)
+- Agrupamento de atletas (K-Means) para identificar perfis de performance;
+- Regressão Linear Múltipla para quantificar fatores determinantes do tempo final.
+
+> Análise Exploratória dos Dados (Estatística Descritiva)
+
+- Identificação de padrões iniciais e verificação de consistência dos dados.
+- Avaliação de medidas de tendência central, dispersão e correlação entre variáveis.
+- Geração de gráficos e histogramas para compreender o comportamento das variáveis de performance.
+- Testes de Hipóteses para comparar diferentes grupos em relalação à uma variável.
+
+> Fase 2: K-Means (Para Identificar Perfis)
+
+- Justificativa: Usado para segmentar a amostra em clusters (perfis) com características de prova similares (ritmo, cadência, variabilidade).
+- Rigor Metodológico: O método exigiu Padronização (Z-score) das variáveis (para evitar distorção de escala) e a escolha de k (número de perfis) foi validada pelo Elbow Method e Silhouette Analysis.
+📘 (Referências: [13], [15], [17], [28])
+
+> Fase 3: Regressão Log-Linear (Para Explicar Desempenho)
+
+- Justificativa: Escolhida para quantificar o impacto de cada fator (pacing, altimetria, perfil) sobre o tempo de prova.
+- Forma Funcional: O modelo é Log-Linear (log(Tempo) ~ ...), o que permite interpretar os coeficientes (β) como impactos percentuais (%), facilitando a discussão do impacto nos diferentes perfis de atletas.
+- Rigor Metodológico: A validade do modelo foi assegurada pela verificação de pressupostos (ex: Multicolinearidade via VIF) e pelo uso de Erros Padrão Robustos (HC3) para corrigir heterocedasticidade [11].
+📘 (Referências: [4], [7], [9], [11], [12])
+
+💡 Slide 6 — Metodologia
+''Slide apenas com titulo Metodologia''
+
+Slide 7  : Metodologia (1/3): Coleta e Tratamento dos Dados
+🧭 Subtítulo (opcional, para o topo ou abaixo do título)
+Da extração no Strava ao conjunto final de 109 atletas padronizado para análise
+(**DEIXE ESPAÇO PARA INCLUIR UM FLUXOGRAMA**)
+
+1️⃣ Fonte dos Dados
+
+- Dados coletados da plataforma Strava
+- Provas de La Misión Brasil (2022 e 2023) — modalidade 35 km
+- Total inicial: ~170 atletas, com registros públicos de desempenho
+💡 Representar com ícones: logo do Strava + ícone de montanha + atleta correndo
+
+2️⃣ Técnica de Coleta (Web Scraping)
+
+- Coleta via Web Scraping em Python (Selenium)
+- Coleta exigiu autenticação na plataforma (acesso a dados de assinante).
+- Extraídas tabelas de “laps” (ritmo por km) e informações demográficas
+📊 Sugerir um mini fluxograma visual:
+>Página de resultados → Links individuais → Extração de voltas → Extração de dados demográficos
+
+3️⃣ Padronização e limpeza
+
+- Foi usado um arquivo GPX oficial da prova para criar um "gabarito" padrão de altimetria (ganho/perda) para cada um dos 36km.
+- Garantia de que as variações de GPS dos atletas não afetassem a análise de terreno.
+
+- Limpeza e junção dos dados:
+    -- 🧩 Unificação por atleta e quilômetro
+    -- 🧹 Remoção de duplicatas (166 → 109 atletas únicos)
+    -- ⏱️ Conversão de unidades (tempo → segundos)
+    -- ⚠️ Tratamento de ausentes:
+        --- Frequência cardíaca → removida (>70% ausente)
+        --- Faixa de peso → adicionada categoria “Não informado”
+        --- Sexo / Idade → exclusão listwise (faltantes <10%)
+
+4 - Resultado Final
+
+📈 Base consolidada:
+Amostra Final: N = 109 atletas únicos x 36km
+
+🧭 Resumo visual sugerido (para a Gamma)
+Pode usar um timeline horizontal com ícones ou cards:
+> GPX Padronizado → Web Scraping → Limpeza → Agregação → Métricas Criadas → Base Final
+
+Slide 8: Metodologia (2/3): Engenharia de Variáveis
+Agregação e Criação de Métricas
+Os dados brutos estavam em nível-km (36 obs/atleta). Para analisar a performance do atleta, foi preciso agregar e criar métricas analíticas.
+
+- Dados agregados por atleta → 1 linha por corredor
+- Métricas criadas:
+- Os dados foram agrupados (groupby) por atleta:
+    -- Tempo_Final_seg —  soma dos tempos dos 36km
+    -- Ritmo_Médio_seg — média de tempo/km
+    -- Variabilidade_Ritmo_std — Desvio padrão dos tempos (consistência do ritmo)
+
+- Divisão da prova em duas metades (1–18 km e 19–36 km)
+        --- Cálculo das variáveis:
+        🏁 Ritmo_Médio_Primeira_Metade
+        🏃 Ritmo_Médio_Segunda_Metade
+        🔄 diff_relativa_segunda_primeira_parte (%) — A diferença percentual (%) entre o ritmo da segunda metade e da primeira metade
+        Interpretação: Mede o "Positive/Negative Split" de forma normalizada. 
+💡 Visual: use dois medidores lado a lado (“1ª metade” e “2ª metade”) com uma seta indicando a diferença percentual.
+
+- Desempenho por Terreno (Altimetria)
+Cada quilômetro classificado como:
+    -- ⛰️ Subida
+    -- 🏔️ Descida
+    -- 🟩 Plano
+    -- 🔁 Misto
+Geração de médias específicas:
+    -- Ritmo_Médio_SUBIDA
+    -- Ritmo_Médio_DESCIDA
+💡 Visual: pequeno gráfico com quatro blocos coloridos (um para cada tipo de terreno) com ícones de seta ↑ ↓ →.
+
+- Índices de Performance Relativa
+Criados para capturar especialização técnica:
+    -- ⚙️ índice_subida → quão mais lento o atleta é na subida
+    -- ⚙️ índice_descida → quão mais rápido é na descida
+    -- ⚙️ índice_descida_vs_subida → compara desempenho entre os dois terrenos
+Permitem distinguir atletas versáteis vs especialistas em terreno
+💡 Visual: gráfico tipo radar (ou barra comparando subida/descida).
+
+4️⃣ Resultado Final
+
+📊 Conjunto de variáveis analíticas completo, incluindo:
+- Métricas gerais de desempenho (tempo final, ritmo, consistência)
+- Estratégia de prova (pacing)
+- Performance por terreno (altimetria)
+- Índices de especialização técnica
+
+🧩 Base pronta para análise multivariada (clusterização e regressão)
+
+Slide 9: MetodologiA (3/3): Fluxo da Análise Estatística
+
+A análise foi conduzida em três fases sequenciais:
+
+- Fase 1: Análise Descritiva e Testes de Hipótese
+    -- Análise do perfil da amostra (histogramas, boxplots).
+    -- Verificação de Normalidade (Shapiro-Wilk) revelou dados não-normais.
+    -- Ação: Uso de Testes Não-Paramétricos para comparações de grupos:
+        --- Mann-Whitney U (comparação entre sexos).
+        --- Kruskal-Wallis (comparação entre faixas etárias/peso).
+        --- Correlação de Spearman (associação de performance e pacing).
+
+Fase 2: Análise de Agrupamento (K-Means)
+- Objetivo: Identificar os "Perfis de Corredores".
+    -- Pré-processamento (1): Para mitigar a multicolinearidade entre indice_subida e indice_descida, foi aplicada uma rotação ortogonal (45º), criando dois novos eixos não-correlacionados (indice_capacidade_geral e indice_especializacao).
+    (**DEIXE ESPAÇO PARA INCLUIR UM GRAFICO**)
+    -- Pré-processamento (2): Padronização (Z-score) das variáveis de entrada.
+- Foram utilizadas as variáveis 'Variabilidade_Ritmo_std', 'diff_relativa_segunda_primeira_parte', e as recém-criadas 'indice_capacidade_geral' e 'indice_especializacao'
+- Validação: Número de clusters (k) definido pelo Elbow Method e Silhouette Analysis.
+(**DEIXE ESPAÇO PARA INCLUIR DOIS GRAFICOS LADO A LADO - GRAFICO COTEVELO E METODO DA SILHUETA**)
+
+Fase 3: Modelagem de Regressão Log-Linear
+
+- Objetivo: Explicar log(Tempo_Final_seg) e quantificar o impacto dos fatores.
+    -- Refinamento (1): A especificação Log-Linear foi escolhida por melhor ajuste e por corrigir a heterocedasticidade (validado pelo teste de Breusch-Pagan).
+    -- Refinamento (2): A multicolinearidade severa (VIF > 20) nos termos de interação foi corrigida com a centralização na média da variável Variabilidade_Ritmo_std.
+- Modelo Final: Validado, robusto (VIFs < 5.5) e com todos os pressupostos atendidos (Normalidade, Homocedasticidade).
+
+Slide 10: Conteúdo de Resultados (Parte 1: Perfil da Amostra e Fatores Demográficos)
+
+Slide 10.1 - Demostrativo do percurso
+Antes de entrarmos nos resultados da nossa amostra, é bom que vejamos como é o percurso da prova para termos uma noção.
+(**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+Resultados (1/4): Perfil da Amostra e Fatores Demográficos
+- A Amostra (N=109):
+- Tempo Médio: 422 min (aprox. 7 horas).
+- Grande Variabilidade: O tempo de prova variou de 236 min (< 4h) a 791 min (> 13h).
+- A distribuição é levemente assimétrica à direita (Fig. 5.1). 
+    (**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+Influência dos Fatores Demográficos (Testes Não-Paramétricos):
+- Sexo: HÁ diferença significativa (Mann-Whitney, p=0.0319).
+    -- Homens (N=78) tiveram mediana de 374 min.
+    -- Mulheres (N=31) tiveram mediana de 444 min.
+    (**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+- Faixa Etária: HÁ diferença significativa (Kruskal-Wallis, p=0.0360).
+    -- Atletas de 20-24 anos foram significativamente mais rápidos que os grupos 45-54 e 55-64 (Teste de Dunn).
+    (**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+- Faixa de Peso: NÃO HÁ evidência de diferença significativa (Kruskal-Wallis, p=0.1810).
+    (**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+Slide 11: Conteúdo de Resultados (Parte 2: A Hipótese Central - Pacing vs. Desempenho)
+
+Resultados (2/4): A Consistência de Ritmo é Decisiva
+Após analisar os fatores demográficos, investigamos a hipótese central: A consistência da estratégia de ritmo (pacing) afeta o desempenho?
+
+- Métrica de Estratégia: Variabilidade_Ritmo_std (Desvio Padrão do ritmo em min/km).
+- Métrica de Desempenho: Tempo_Final_min.
+
+-- Correlação de Spearman: ρ = 0.9388 (p < 0.001)
+O teste (escolhido devido à não-normalidade dos dados) revelou uma correlação positiva quase perfeita.
+
+- Conclusão Clara: Atletas que mantêm um ritmo mais constante (menor variabilidade) obtêm tempos finais melhores (menores).
+A consistência da estratégia emerge como um preditor mais forte que os fatores demográficos.
+
+Gráfico-Chave: Tempo Final vs. Variabilidade do Ritmo
+(**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+Slide 12: Conteúdo de Resultados (Parte 3: As "Personas" dos Corredores (K-Means))
+
+Resultados (3/4): As "Personas" dos Corredores (K-Means)
+Vimos que a consistência é chave. Mas será que todos os atletas usam a mesma estratégia?
+- Método: Aplicamos K-Means sobre as variáveis de performance e estratégia (consistência, splits, índices de terreno).
+- Validação: O Elbow Method e a Análise de Silhueta convergiram para k = 3 clusters (perfis) ideais.
+- Validação Estatística: Os 3 grupos são estatisticamente distintos entre si (ANOVA/Kruskal-Wallis, p < 0,001).
+
+Os 3 Perfis de Corredores (Baseado na Tabela 5.4)
+1. A Elite Consistente (58% da amostra; N=63)
+- Desempenho: Menor tempo. *Tempo médio*: 20568.43 seg $\approx$ 5 horas e 43 minutos.
+- Estratégia: Variabilidade de ritmo baixíssima. Único grupo com negative split acentuado (aceleram na 2ª metade).
+
+2. Os Intermediários Táticos (25% da amostra; N=27)
+- Desempenho: Tempo mediano. *Tempo médio*: 30596.93 seg $\approx$ 8 horas e 30 minutos.
+- Estratégia: Variabilidade de ritmo dobrada (vs. Elite). Ritmo conservador (even split).
+- Ponto Forte: São os melhores "escaladores" (melhor indice_capacidade_geral). Usam a tática de terreno.
+
+3. Os Amadores Resilientes (17% da amostra; N=19)
+- Desempenho: Maior tempo. *Tempo médio*: 33577.84 seg $\approx$ 9 horas e 20 minutos.
+- Estratégia: Altíssima variabilidade de ritmo (corrida menos planejada e mais reativa).
+"
+- Gráfico-Chave: Boxplots das variáveis por Cluster (Figura 5.6)
+(**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+"
+
+Slide 13: Conteúdo de Resultados (Parte 4: O Modelo Preditivo (Regressão Log-Linear))
+
+Resultados (4/4): O "Custo" da Inconsistência (Regressão)
+Finalmente, unimos tudo em um modelo de regressão para explicar o log(Tempo_Final_seg).
+
+- Poder do Modelo: R² Ajustado = 0.892
+*O modelo final (log(Tempo) ~ Variabilidade * Perfil) foi capaz de explicar 89,2% da variação no desempenho dos atletas.*
+- Rigor: O modelo foi validado, corrigido para multicolinearidade (VIFs < 5.5) e atendeu a todos os pressupostos (Resíduos normais e homocedásticos, como visto na Fig 5.7).
+(**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+As Duas Grandes Conclusões do Modelo (Tabela 5.5):
+1. A Inconsistência é Universalmente Ruim (p < 0.001)
+- O modelo confirma: ser inconsistente (maior variabilidade de ritmo) sempre piora o tempo final, para todos os atletas.
+
+2. O Custo da Inconsistência Varia Conforme o Perfil (A Interação)
+- Este é o achado principal: A penalidade por ser inconsistente é muito mais severa para a Elite.
+- Para cada 1 segundo a mais de *desvio padrão* no ritmo, o tempo final da prova piora em:
+    -- Amadores: +0.10%
+    -- Intermediários: +0.14%
+    -- Elite: +0.21% (praticamente o dobro do custo de um amador!)
+
+(**DEIXAR ESPAÇO PARA INSERIR ARQUIVO DO GRAFICO AQUI**)
+
+- O Impacto Prático (em Minutos):
+O que isso significa em tempo de prova?
+- Considerando um aumento de apenas 30 segundos no *desvio padrão* do ritmo (um pacing um pouco mais inconstante), a penalidade no tempo final é de:
+    -- ~13 minutos para um Amador.
+    -- ~18 minutos para um Intermediário.
+    -- ~29 minutos para um atleta de Elite.
+
+(**CRIAR UMA IMAGEM EM FORMA DE GRAFICO QUE DEMOSTRE UM EXEMPLO DE UM ATLETA CONSTANTE E UM QUE CORRE VARIANDO MUITO O TEMPO**
+"PROMPT: Um gráfico de linha comparativo mostrando dois corredores em uma corrida de 5km. O eixo X representa os quilômetros (Km 1 a Km 5) 
+e o eixo Y representa o ritmo em minutos por quilômetro (min/km), com valores decrescentes no topo (indicando ritmo mais rápido). 
+Uma linha, rotulada 'Atleta A (O Relógio)', é suave e consistente, variando minimamente em torno da média de 7:00 min/km. 
+Outra linha, rotulada 'Atleta B (O Surtado)', mostra flutuações extremas de ritmo em cada quilômetro (picos e vales acentuados), 
+mas ainda converge para a mesma média final de 7:00 min/km. O gráfico deve ter um título claro 
+como 'Ritmo vs. Variabilidade: Atleta A (Baixo DP) vs. Atleta B (Alto DP)'. Inclua ícones discretos de um relógio para o Atleta A e 
+um símbolo de 'montanha-russa' ou 'zigzag' para o Atleta B.""")
+
+
+Slide 14: Conclusão
+Este trabalho se propôs a identificar perfis de corredores de montanha e quantificar os fatores de desempenho usando dados do Strava.
+
+Principais Achados
+- Estratégia > Demografia: A consistência do ritmo (Variabilidade_Ritmo_std, com $\rho=0.94$) é um preditor de desempenho muito mais forte do que fatores demográficos isolados como sexo ou idade.
+- Existem 3 Perfis de Atletas nessa prova: A análise de cluster revelou três grupos estatisticamente distintos com estratégias claras: a "Elite Consistente" (baixa variabilidade), os "Intermediários Táticos" (foco em terreno) e os "Amadores Resilientes" (alta variabilidade).
+- O Custo da Inconsistência é Real (e Variável): O modelo final (R²-aj = 0.892) provou que a inconsistência sempre penaliza o tempo. Mais importante, o "custo" dessa penalidade é o dobro para um atleta de Elite em comparação com um Amador, mostrando que a gestão de pacing é o fator decisivo no alto rendimento.
+
+Limitações e Trabalhos Futuros
+
+- Limitações: A análise foi restrita a uma única prova (La Misión 35km) e não incluiu variáveis fisiológicas (como Frequência Cardíaca, devido a dados faltantes).
+- Trabalhos Futuros: Sugere-se replicar o estudo em diferentes distâncias (ultramaratonas) e percursos, bem como integrar dados fisiológicos para criar modelos ainda mais robustos.
+
+slide 15 - referencias
+ [1] Abbiss, C.R. e Laursen, P.B.: Describing and Understanding Pacing Strategies during
+ Athletic Competition. Sports Medicine, 38(3):239–252, 2008.
+ [2] Akaike, H.: A new look at the statistical model identification. IEEE Transactions on Auto
+matic Control, 19(6):716–723, 1974.
+ [3] Borges, D.L.: Dinâmica de tempo e pacing no campeonato brasileiro feminino de skyrun
+ning, 2023.
+ [4] Breusch, T.S. e Pagan, A.R.: A Simple Test for Heteroscedasticity and Random Coefficient
+ Variation. Econometrica, 47(5):1287–1294, 1979.
+ [5] Esteve-Lanao, J., Larumbe-Zabala, E., Dabab, A., Alcocer-Gamboa, A. e Ahumada, F.:
+ Running world cross-country championships: a unique model for pacing. International
+ Journal of Sports Physiology and Performance, 9(6):1000–1005, nov. 2014.
+ [6] França, G.L. de, França, D.L. de e Caregnato, A.F.: Motivos da Adesão em Atividades de
+ Aventura na Natureza e as Influências na Qualidade de Vida de seus Praticantes. LICERE- Revista do Programa de Pós-graduação Interdisciplinar em Estudos do Lazer, 24(3):182
+203, 2021
+
+slide 16 - Videos e midias La Mision Brasil 2024
+Antes de encerrar gostaria de passar algumas fotos e videos para mostrar como é e como foi a la mision.
+(**DEIXAR ESPAÇO PARA ANEXAR UM VIDEO**)
+
+
+Slide 17 - Agradecimentos
+
+Obrigado!
+João Marcos de Souza Matos
+
+joaomarcos1296@gmail.com
+
+Github: https://github.com/joaomts
+(**Espaço para um foto minha correndo**)
+
+Estou aberto a perguntas.
